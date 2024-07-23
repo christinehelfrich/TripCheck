@@ -14,7 +14,10 @@ module.exports.getProfileById = async (req, res) => {
 }
 
 module.exports.saveProfile = (req, res) => {
-    const profile = req.body.profile
+    const profile = req.body
+    console.log('****!', profile, '!****')
+
+
 
     ProfileModel.create(profile)
     .then((data) => {

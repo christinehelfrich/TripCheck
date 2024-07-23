@@ -5,47 +5,19 @@ const profileSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    email: {
+    id: {
         type: String,
         required: true
+    },
+    email: {
+        type: String
     },
     bio: {
         type: String
     },
-    photo: {
-        type: String
-    },
-    skills: {
-        type: Array
-    },
-    hourlyWage: {
-        type: String
-    },
-    area: {
-        type: String,
-        required: true
-    },
-    isUnder21: {
-        type: Boolean
-    },
-    experience: {
-        type: String,
-    },
-    isWorkerProfileType: {
-        type: Boolean,
-        required: true
-    },
-    isEmployerProfileType: {
-        type: Boolean,
-        required: true
-    },
     password: {
         type: String,
         required: true
-    },
-    isSuperUser: {
-        type: Boolean,
-        default: false
     }
 
     

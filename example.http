@@ -1,0 +1,8 @@
+POST http://localhost:5002/api/profile
+Content-Type: application/json
+
+{
+    "name": "test",
+    "id": 0,
+    "password": "123!@#Qwe"
+}

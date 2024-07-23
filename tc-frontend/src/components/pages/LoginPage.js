@@ -19,12 +19,10 @@ const LoginPage = () => {
 
     const Login = async (event) => {
         let res = await login(event)
-        if(res === "Success"){
-          console.log('res', res)
+        if(res.status === 200){
           setDisplayMessage('You are successfully logged in!')
         }else {
-          console.log('res', res.response.data.msg)
-          setDisplayMessage(res.response.data.msg)
+          setDisplayMessage(res.response?.data?.msg ? res.response?.data?.msg : 'There was an error with your login.')
         }
          
         

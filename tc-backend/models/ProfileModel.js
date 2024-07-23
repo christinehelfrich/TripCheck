@@ -5,12 +5,9 @@ const profileSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    id: {
+    email: {
         type: String,
         required: true
-    },
-    email: {
-        type: String
     },
     bio: {
         type: String
@@ -18,6 +15,10 @@ const profileSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    plans: {
+        type: [String],
+        default: []
     }
 
     

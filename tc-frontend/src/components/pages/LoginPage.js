@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
-import { createProfile } from '../../services/backend/profileService';
+import { login } from '../../services/backend/authService';
 
 
 const LoginPage = () => {
     const [isFormEdited, setIsFormEdited] = useState(false)
+    const [displayMessage, setDisplayMessage] = useState('');
     const {
         register,
         handleSubmit,
-        // reset,
-        // setValue,
-        // watch,
-        // formState: { errors },
       } = useForm({
         // defaultValues: defaultFormValues
       });
@@ -21,14 +18,26 @@ const LoginPage = () => {
       }
 
     const Login = async (event) => {
-        // let res = await createProfile(event)
-        // console.log('res', res)
+        let res = await login(event)
+        if(res === "Success"){
+          console.log('res', res)
+          setDisplayMessage('You are successfully logged in!')
+        }else {
+          console.log('res', res.response.data.msg)
+          setDisplayMessage(res.response.data.msg)
+        }
+         
+        
 
     }
 
   return (
     <div>
         <h2>Log In</h2>
+        {displayMessage !== '' && (
+          <div><p>{displayMessage}</p></div>
+        )}
+       
         <form className='createProfileForm' onSubmit={handleSubmit(Login)}>
 
             <div>
@@ -53,7 +62,7 @@ const LoginPage = () => {
                 />
             </div>
 
-            <input type="submit" disabled={!isFormEdited} aria-disabled={!isFormEdited} value='Submit' />
+            <input type="submit" disabled={!isFormEdited} aria-disabled={!isFormEdited} value='Login' />
             
         </form>
     </div>

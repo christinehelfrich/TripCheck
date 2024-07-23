@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { createProfile } from '../../services/backend/profileService';
 
-const SignUpPage = () => {
+
+const LoginPage = () => {
     const [isFormEdited, setIsFormEdited] = useState(false)
     const {
         register,
@@ -19,25 +20,16 @@ const SignUpPage = () => {
         setIsFormEdited(true)
       }
 
-    const onSubmit = async (event) => {
-        let res = await createProfile(event)
-        console.log('res', res)
+    const Login = async (event) => {
+        // let res = await createProfile(event)
+        // console.log('res', res)
 
     }
+
   return (
     <div>
-        <h2>Create an Account</h2>
-        <form className='createProfileForm' onSubmit={handleSubmit(onSubmit)}>
-            <div>
-                <label>Name</label>
-                <input 
-                type="text"
-                name="name" 
-                {...register("name", {
-                  onChange: (e) => {onFormChange(e)}
-                })}
-                />
-            </div>
+        <h2>Log In</h2>
+        <form className='createProfileForm' onSubmit={handleSubmit(Login)}>
 
             <div>
                 <label>Email</label>
@@ -68,4 +60,4 @@ const SignUpPage = () => {
   )
 }
 
-export default SignUpPage
+export default LoginPage

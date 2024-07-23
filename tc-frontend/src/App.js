@@ -7,7 +7,6 @@ import SignUpPage from "./components/pages/SignUpPage";
 function App() {
   return (
     <div className="App">
-      hi!
       <Routes>
       <Route path="/" element={<SignUpPage />} />
 

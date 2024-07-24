@@ -1,0 +1,7 @@
+div.itinerary-card {
+    border: 1px solid black;
+    margin: 1rem;
+    padding: 0.5rem;
+    width: 200px;
+    border-radius: 0.5rem;
+}

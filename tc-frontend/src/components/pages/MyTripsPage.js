@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getAllItineraries } from '../../services/backend/itinerariesService'
+import ItineraryCard from '../organisms/ItineraryCard'
+import '../../styles/MyTrips.css'
 
 const MyTripsPage = () => {
 
@@ -15,12 +17,10 @@ const MyTripsPage = () => {
     }
 
   return (
-    <div>
+    <div className='my-trips'>
 
         {itineraries.map((itinerary, index) => (
-            <div>
-                {itinerary.itineraryName}
-            </div>
+            <ItineraryCard itinerary={itinerary}></ItineraryCard>
         ))}
       
     </div>

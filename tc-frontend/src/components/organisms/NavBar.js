@@ -27,7 +27,7 @@ const NavBar = () => {
         {user.isAuthenticated && (
             <>
                 <li><Link className='navLink' to={'/home'}><p>My Trips</p></Link></li>
-                <li><Link className='navLink' onClick={onLogout}><p>Log Out</p></Link></li>
+                <li><Link className='navLink' onClick={onLogout}><p className='button-primary'>Log Out</p></Link></li>
             </>
         )}
         {!user.isAuthenticated && (

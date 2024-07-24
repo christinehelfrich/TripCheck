@@ -2,7 +2,7 @@
 
 :root {
   --primary-color: #e65f39;
-  --secondary-color: #DA6E2A;
+  --secondary-color: #f6a02f;
 }
 
 body {
@@ -24,6 +24,7 @@ code {
   color: white;
   border-radius: 1rem;
   padding: 0.5rem;
+  border: none;
 }
 
 .button-primary:hover {

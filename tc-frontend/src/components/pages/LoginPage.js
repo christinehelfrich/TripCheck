@@ -4,7 +4,7 @@ import { login } from '../../services/backend/authService';
 import { useDispatch } from 'react-redux';
 import { updateUser } from '../../redux/userSlice';
 import { useNavigate } from 'react-router-dom'
-
+import '../../styles/Login.css'
 
 const LoginPage = () => {
 
@@ -40,7 +40,7 @@ const LoginPage = () => {
     }
 
   return (
-    <div>
+    <div className='login-container'>
         <h2>Log In</h2>
         {displayMessage !== '' && (
           <div><p>{displayMessage}</p></div>
@@ -70,7 +70,7 @@ const LoginPage = () => {
                 />
             </div>
 
-            <input type="submit" disabled={!isFormEdited} aria-disabled={!isFormEdited} value='Login' />
+            <input className='button-primary' type="submit" disabled={!isFormEdited} aria-disabled={!isFormEdited} value='Login' />
             
         </form>
     </div>

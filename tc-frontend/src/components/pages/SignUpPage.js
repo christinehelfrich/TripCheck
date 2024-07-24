@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
+import '../../styles/Signup.css'
 import { createProfile } from '../../services/backend/profileService';
 
 const SignUpPage = () => {
@@ -25,7 +26,7 @@ const SignUpPage = () => {
 
     }
   return (
-    <div>
+    <div className='signup-container'>
         <h2>Create an Account</h2>
         <form className='createProfileForm' onSubmit={handleSubmit(onSubmit)}>
             <div>
@@ -61,7 +62,7 @@ const SignUpPage = () => {
                 />
             </div>
 
-            <input type="submit" disabled={!isFormEdited} aria-disabled={!isFormEdited} value='Submit' />
+            <input className='button-primary' type="submit" disabled={!isFormEdited} aria-disabled={!isFormEdited} value='Submit' />
             
         </form>
     </div>

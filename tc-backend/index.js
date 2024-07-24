@@ -4,6 +4,7 @@ const mongoose = require("mongoose")
 require("dotenv").config()
 
 const profileRoutes = require("./routes/ProfileRoute")
+const itineraryRoutes = require("./routes/ItineraryRoute")
 
 const cors = require("cors")
 
@@ -23,5 +24,6 @@ mongoose.connect(process.env.MONGO_URI)
 .catch((err) => console.log(err))
 
 app.use("/api", profileRoutes)
+app.use("/api", itineraryRoutes)
 
 app.listen(PORT, () => console.log(`Listening at ${PORT}`))

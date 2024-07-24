@@ -1,7 +1,7 @@
-POST http://localhost:5002/api/itinerary
+GET http://localhost:5002/api/itineraries
 Content-Type: application/json
 
-{
-    "itineraryName": "my second itinerary",
-    "ownerId": "66a00c61de450afc52bf5fcd"
-}
+# {
+#     "itineraryName": "my second itinerary",
+#     "ownerId": "66a00c61de450afc52bf5fcd"
+# }

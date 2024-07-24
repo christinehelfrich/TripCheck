@@ -9,4 +9,5 @@ router.post("/itinerary", saveItinerary);
 router.put("/itinerary/:id", updateItinerary)
 router.delete("/itinerary/:id", deleteItinerary)
 
+
 module.exports = router

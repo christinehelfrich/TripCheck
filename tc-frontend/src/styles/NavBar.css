@@ -14,8 +14,8 @@
     justify-content: space-around;
 }
 
-.navbar .navlist li {
-    padding-left: 1rem;
+.navbar .navlist li p {
+    padding: 0.5rem;
 }
 
 .navbar .navlist li .navLink {

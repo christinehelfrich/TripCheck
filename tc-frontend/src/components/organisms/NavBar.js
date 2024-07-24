@@ -33,7 +33,7 @@ const NavBar = () => {
         {!user.isAuthenticated && (
             <>
                 <li><Link className='navLink' to={'/signup'}><p>Sign Up</p></Link></li>
-                <li><Link className='navLink button-primary' to={'/login'}><p>Log In</p></Link></li>
+                <li><Link className='navLink' to={'/login'}><p className='button-primary'>Log In</p></Link></li>
             </>
         )}
         </ul>

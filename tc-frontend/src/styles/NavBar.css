@@ -1,0 +1,30 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.navbar .navbar-image {
+    width: 150px;
+}
+
+.navbar .navlist {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar .navlist li {
+    padding-left: 1rem;
+}
+
+.navbar .navlist li .navLink {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.navbar .navlist li .navLink:hover {
+    text-decoration: underline;
+}
+

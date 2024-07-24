@@ -1,18 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {useSelector, useDispatch} from "react-redux"
-import { logout } from '../../redux/userSlice'
-
+import {useSelector} from "react-redux"
 const HomePage = () => {
 
-  const dispatch = useDispatch()
   const user = useSelector((state) => {
     return state.user.user
     });
 
-  const onLogout = () => {
-    dispatch(logout())
-  }
 
   return (
     <div>

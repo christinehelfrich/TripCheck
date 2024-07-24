@@ -1,9 +1,16 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { login } from '../../services/backend/authService';
+import { useDispatch } from 'react-redux';
+import { updateUser } from '../../redux/userSlice';
+import { useNavigate } from 'react-router-dom'
 
 
 const LoginPage = () => {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const [isFormEdited, setIsFormEdited] = useState(false)
     const [displayMessage, setDisplayMessage] = useState('');
     const {
@@ -20,7 +27,10 @@ const LoginPage = () => {
     const Login = async (event) => {
         let res = await login(event)
         if(res.status === 200){
+          console.log(res);
+          dispatch(updateUser({user: res.data.user, isAuthenticated: true}))
           setDisplayMessage('You are successfully logged in!')
+          navigate("/", {state: {showLoginSuccess: true}})
         }else {
           setDisplayMessage(res.response?.data?.msg ? res.response?.data?.msg : 'There was an error with your login.')
         }

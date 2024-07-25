@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import '../../styles/Signup.css'
 import { createProfile } from '../../services/backend/profileService';
+import { useNavigate } from 'react-router-dom'
 
 const SignUpPage = () => {
+  const navigate = useNavigate()
     const [isFormEdited, setIsFormEdited] = useState(false)
     const [errorMessage, setErrorMessage] = useState('');
     const {
@@ -23,13 +25,13 @@ const SignUpPage = () => {
 
     const onSubmit = async (event) => {
         let res = await createProfile(event)
-        if(res.status !== 200) {
+        if(res.status === 200 || res.status === 201) {
+          navigate("/login", {state: {showSignUpSuccess: true}})
+        } else{
           setErrorMessage(res?.data?.msg ? res.data.msg : "An error has occured");
           setTimeout(() => {
             setErrorMessage('')
           }, 5000)
-        } else{
-          console.log('success')
         }
 
     }

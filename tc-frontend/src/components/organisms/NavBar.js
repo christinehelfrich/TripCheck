@@ -16,7 +16,6 @@ const NavBar = () => {
         dispatch(logout())
       }
 
-      console.log(user)
 
   return (
     <div className='navbar'>
@@ -26,6 +25,7 @@ const NavBar = () => {
 
         {user.isAuthenticated && (
             <>
+                <li><Link className='navLink' to={'/createitinerary'}><p>Create Itinerary</p></Link></li>
                 <li><Link className='navLink' to={'/mytrips'}><p>My Trips</p></Link></li>
                 <li><Link className='navLink' onClick={onLogout}><p className='button-primary'>Log Out</p></Link></li>
             </>

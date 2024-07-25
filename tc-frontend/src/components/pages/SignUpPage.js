@@ -11,12 +11,7 @@ const SignUpPage = () => {
     const {
         register,
         handleSubmit,
-        // reset,
-        // setValue,
-        // watch,
-        // formState: { errors },
       } = useForm({
-        // defaultValues: defaultFormValues
       });
 
       const onFormChange = (event) => {

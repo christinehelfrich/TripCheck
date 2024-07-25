@@ -9,6 +9,9 @@ const itinerarySchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String
+    },
     startDate: {
         type: Date
     },

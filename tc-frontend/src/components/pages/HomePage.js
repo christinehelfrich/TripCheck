@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {useSelector, useDispatch} from "react-redux"
+import {useSelector} from "react-redux"
 import { useLocation } from 'react-router-dom'
 
 const HomePage = () => {
@@ -8,7 +8,6 @@ const HomePage = () => {
     const [showDeleteSuccessMessage, setShowDeleteSuccessMessage] = useState(false)
     const [showCreateSuccessMessage, setShowCreateSuccessMessage] = useState(false)
     const [showLoginSuccessMessage, setShowLoginSuccessMessage] = useState(false)
-    const dispatch = useDispatch()
     const user = useSelector((state) => {
       return state.user.user
       });

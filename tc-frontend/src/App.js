@@ -7,6 +7,7 @@ import HomePage from "./components/pages/HomePage";
 import LoginPage from "./components/pages/LoginPage";
 import NavBar from "./components/organisms/NavBar";
 import MyTripsPage from "./components/pages/MyTripsPage";
+import CreateItineraryPage from "./components/pages/CreateItineraryPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/mytrips" element={<MyTripsPage />} />
+      <Route path="/createitinerary" element={<CreateItineraryPage />} />
       </Routes>
     </div>
   );

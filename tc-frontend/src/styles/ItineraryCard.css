@@ -4,4 +4,5 @@ div.itinerary-card {
     padding: 0.5rem;
     width: 200px;
     border-radius: 0.5rem;
+    cursor: pointer;
 }

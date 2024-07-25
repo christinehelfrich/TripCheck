@@ -3,8 +3,10 @@ import { useForm } from 'react-hook-form';
 import '../../styles/CreateItinerary.css'
 import { createItinerary } from '../../services/backend/itinerariesService';
 import {useSelector} from "react-redux"
+import { useNavigate } from 'react-router-dom'
 
 const CreateItineraryPage = () => {
+    const navigate = useNavigate()
 
     const [isFormEdited, setIsFormEdited] = useState(false)
     const [errorMessage, setErrorMessage] = useState('');
@@ -28,9 +30,14 @@ const CreateItineraryPage = () => {
 
       const onSubmit = async (event) => {
         event.ownerId = user.user._id
-        console.log(event)
         let res = await createItinerary(event)
-        console.log(res)
+        if(res.status === 201) {
+            console.log(res.data._id)
+            // redirect to itinerary page
+            navigate(`/itinerary/${res.data._id}`, {state: {showCreateSuccess: true}})
+        } else {
+            setErrorMessage(res.data.msg)
+        }
       }
 
   return (

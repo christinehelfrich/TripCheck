@@ -8,6 +8,7 @@ import LoginPage from "./components/pages/LoginPage";
 import NavBar from "./components/organisms/NavBar";
 import MyTripsPage from "./components/pages/MyTripsPage";
 import CreateItineraryPage from "./components/pages/CreateItineraryPage";
+import ItineraryPage from "./components/pages/ItineraryPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/mytrips" element={<MyTripsPage />} />
       <Route path="/createitinerary" element={<CreateItineraryPage />} />
+      <Route path="/itinerary/:itineraryId" element={<ItineraryPage />} />
       </Routes>
     </div>
   );

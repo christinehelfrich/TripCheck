@@ -1,3 +1,5 @@
 div.my-trips {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }

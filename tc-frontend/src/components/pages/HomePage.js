@@ -8,6 +8,7 @@ const HomePage = () => {
     const [showDeleteSuccessMessage, setShowDeleteSuccessMessage] = useState(false)
     const [showCreateSuccessMessage, setShowCreateSuccessMessage] = useState(false)
     const [showLoginSuccessMessage, setShowLoginSuccessMessage] = useState(false)
+    const [showNotFoundErrorMessage, setShowNotFoundErrorMessage] = useState(false)
     const user = useSelector((state) => {
       return state.user.user
       });
@@ -33,6 +34,13 @@ const HomePage = () => {
       setShowLoginSuccessMessage(false)
     }, 2000)
       }
+
+      if(state?.showNotFoundErrorMessage){
+        setShowNotFoundErrorMessage(true)
+      setTimeout(() => {
+        setShowNotFoundErrorMessage(false)
+      }, 2000)
+        }
   
     }, [state])
 
@@ -42,6 +50,7 @@ const HomePage = () => {
       {showCreateSuccessMessage && (<div className='success-panel'>Successfully Created!</div>)}
       {showDeleteSuccessMessage && (<div className='success-panel'>Successfully Deleted!</div>)}
       {showLoginSuccessMessage && (<div className='success-panel'>Successfully Logged In!</div>)}
+      {showNotFoundErrorMessage && (<div className='error-panel'>Not Found</div>)}
 
       {user.isAuthenticated && (
         <h2>Hello, {user.user.name} </h2>

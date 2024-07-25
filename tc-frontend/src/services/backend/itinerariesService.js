@@ -21,3 +21,15 @@ export const getAllItineraries = () => {
       return err
     })
 }
+
+export const getItineraryById = (itineraryId) => {
+  return axios.get(`${baseURL}/itinerary/${itineraryId}`)
+  .then((res) => {
+    console.log('NO ERR', res)
+      return res
+    })
+  .catch((err) => {
+    console.log('ERR', err)
+    return err
+  })
+}

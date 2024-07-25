@@ -8,25 +8,26 @@ const validatePassword = (password) => {
 }
 
 module.exports.isPasswordValid = (req, res, next) => {
-    validateLength = true; //validatePassword(req.body.profile.password)
+    validateLength = validatePassword(req.body.password)
 
     if(validateLength) {
         next()
     }else {
-        res.status(400).send({error: 'error', msg: "Password wasn't long enough!"});
+        res.status(400).send({error: 'error', msg: "Password was invalid! It must have at least one letter, one number, one symbol, one uppercase, and at least 8 characters."});
     }
 }
+
 
 module.exports.encryptPassword = (req, res, next) => {
     bcrypt
     .genSalt(saltRounds)
     .then(salt => {
-      return bcrypt.hash(req.body.profile.password, salt)
+      return bcrypt.hash(req.body.password, salt)
     })
     .then(hash => {
-      req.body.profile.password = hash
+      req.body.password = hash
       next()
     })
-    .catch(err => res.status(400).send({error: 'error', msg: "Could not encrypt password, check ByCrypt"}))
+    .catch(err => res.status(400).send(err))
 
 }

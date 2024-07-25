@@ -6,8 +6,8 @@ const router = Router()
 
 router.get("/profiles", getProfiles);
 router.get("/profile/:id", getProfileById)
-//router.post("/profile", isPasswordValid, encryptPassword, saveProfile);
-router.post("/profile", saveProfile);
+router.post("/profile", isPasswordValid, encryptPassword, saveProfile);
+//router.post("/profile", saveProfile);
 router.put("/profile/:id", updateProfile)
 router.delete("/profile/:id", deleteProfile)
 router.post("/login", login)

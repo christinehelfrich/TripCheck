@@ -5,6 +5,7 @@ import { createProfile } from '../../services/backend/profileService';
 
 const SignUpPage = () => {
     const [isFormEdited, setIsFormEdited] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('');
     const {
         register,
         handleSubmit,
@@ -22,12 +23,22 @@ const SignUpPage = () => {
 
     const onSubmit = async (event) => {
         let res = await createProfile(event)
-        console.log('res', res)
+        if(res.status !== 200) {
+          setErrorMessage(res?.data?.msg ? res.data.msg : "An error has occured");
+          setTimeout(() => {
+            setErrorMessage('')
+          }, 5000)
+        } else{
+          console.log('success')
+        }
 
     }
   return (
     <div className='signup-container'>
         <h2>Create an Account</h2>
+        {errorMessage !== '' && (
+          <div className='error-panel'>{errorMessage}</div>
+        )}
         <form className='createProfileForm' onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <label>Name</label>

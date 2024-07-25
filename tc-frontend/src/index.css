@@ -3,6 +3,7 @@
 :root {
   --primary-color: #e65f39;
   --secondary-color: #f6a02f;
+  --error-color: rgb(214, 23, 23);
 }
 
 body {
@@ -52,6 +53,16 @@ h3 {
 }
 
 p, label, button, input {
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.error-panel {
+  background-color: var(--error-color);
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
   font-family: "Ubuntu", sans-serif;
   font-style: normal;
   font-size: 14px;

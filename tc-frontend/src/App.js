@@ -9,6 +9,7 @@ import NavBar from "./components/organisms/NavBar";
 import MyTripsPage from "./components/pages/MyTripsPage";
 import CreateItineraryPage from "./components/pages/CreateItineraryPage";
 import ItineraryPage from "./components/pages/ItineraryPage";
+import AuthGuardedRoute from "./components/auth/AuthGuardedRoute";
 
 function App() {
   return (
@@ -19,9 +20,19 @@ function App() {
       <Route path="/home" element={<HomePage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/mytrips" element={<MyTripsPage />} />
-      <Route path="/createitinerary" element={<CreateItineraryPage />} />
-      <Route path="/itinerary/:itineraryId" element={<ItineraryPage />} />
+      <Route path="/mytrips" element={
+                  <AuthGuardedRoute>  
+                    <MyTripsPage />
+                  </AuthGuardedRoute>
+                  } />
+      <Route path="/createitinerary" element={
+                  <AuthGuardedRoute> 
+                    <CreateItineraryPage />
+                  </AuthGuardedRoute>} />
+      <Route path="/itinerary/:itineraryId" element={
+                  <AuthGuardedRoute> 
+                    <ItineraryPage />
+                  </AuthGuardedRoute>} />
       </Routes>
     </div>
   );

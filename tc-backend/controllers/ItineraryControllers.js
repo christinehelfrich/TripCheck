@@ -15,9 +15,7 @@ module.exports.getItineraryById = async (req, res) => {
 
 module.exports.saveItinerary = (req, res) => {
     const itinerary = req.body
-    console.log("****!", itinerary, "!****")
-
-
+    itinerary.itineraryImage = req.file.path
 
     ItineraryModel.create(itinerary)
     .then((data) => {

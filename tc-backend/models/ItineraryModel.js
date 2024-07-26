@@ -9,6 +9,9 @@ const itinerarySchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    itineraryImage: {
+        type: String  
+    },
     description: {
         type: String
     },

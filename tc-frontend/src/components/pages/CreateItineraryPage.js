@@ -10,6 +10,7 @@ const CreateItineraryPage = () => {
 
     const [isFormEdited, setIsFormEdited] = useState(false)
     const [errorMessage, setErrorMessage] = useState('');
+    const [coverImage, setCoverImage] = useState({})
     const user = useSelector((state) => {
         return state.user.user
         });
@@ -30,14 +31,26 @@ const CreateItineraryPage = () => {
 
       const onSubmit = async (event) => {
         event.ownerId = user.user._id
-        let res = await createItinerary(event)
+        event.itineraryImage = coverImage
+        const formData = new FormData()
+        formData.append('itineraryName', event.itineraryName)
+        formData.append('ownerId', user.user._id)
+        formData.append('description', event.description)
+        formData.append('itineraryImage', coverImage)
+      //   for (var pair of formData.entries()) {
+      //     console.log(pair[0]+ ', ' + pair[1]); 
+      // }
+        let res = await createItinerary(formData)
         if(res.status === 201) {
-            console.log(res.data._id)
             // redirect to itinerary page
             navigate(`/itinerary/${res.data._id}`, {state: {showCreateSuccess: true}})
         } else {
-            setErrorMessage(res.data.msg)
+            setErrorMessage(res?.data?.msg ? res?.data?.msg : 'there was an error')
         }
+      }
+
+      const handlePhoto = (e) => {
+        setCoverImage(e.target.files[0])
       }
 
   return (
@@ -68,6 +81,16 @@ const CreateItineraryPage = () => {
                   onChange: (e) => {onFormChange(e)}
                 })}
                 />
+            </div>
+
+            <div>
+            <label>Cover Image (optional)</label>
+              <input 
+                  type="file" 
+                  accept=".png, .jpg, .jpeg"
+                  name="itineraryImage"
+                  onChange={handlePhoto}
+              />
             </div>
 
             <input className='button-primary' type="submit" disabled={!isFormEdited} aria-disabled={!isFormEdited} value='Create' />

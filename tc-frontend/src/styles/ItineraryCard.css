@@ -1,10 +1,15 @@
 div.itinerary-card {
-    border: 1px solid black;
+    /* border: 1px solid black;
     margin: 1rem;
     padding: 0.5rem;
     width: 200px;
-    border-radius: 0.5rem;
+    border-radius: 0.5rem; */
+    padding: 0;
+    margin: 15px 10px;
+    border-radius: var(--card_border_radius);
+    background-color: red;
     cursor: pointer;
+    height: fit-content;
 }
 
 div.itinerary-card .itinerary-card-img {

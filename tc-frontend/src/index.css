@@ -5,6 +5,13 @@
   --secondary-color: #f6a02f;
   --error-color: rgb(214, 23, 23);
   --success-color: rgb(22, 172, 69);
+  /* card dimensions */
+  --card_width: 250px;
+  --row_increment: fit-content;
+  --card_border_radius: 16px;
+  --card_small: 26;
+  --card_med: 33;
+  --card_large: 45;
 }
 
 body {

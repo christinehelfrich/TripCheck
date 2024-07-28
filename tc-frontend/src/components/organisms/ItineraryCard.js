@@ -9,12 +9,12 @@ const ItineraryCard = (itinerary) => {
   const onClickCard = () => {
     navigate(`/itinerary/${itinerary.itinerary._id}`)
   }
-  console.log(imageBasePath + '/' + itinerary.itinerary.itineraryImage)
+  console.log(itinerary.itinerary.itineraryImage)
 
   return (
     <div className='itinerary-card' onClick={onClickCard}>
       <p>{itinerary.itinerary.itineraryName}</p>
-    <img className='itinerary-card-img' alt={itinerary.itinerary.itineraryName + '-cover-image'} src={imageBasePath + itinerary.itinerary.itineraryImage}/>
+    <img className='itinerary-card-img' alt={itinerary.itinerary.itineraryName + '-cover-image'} src={itinerary.itinerary.itineraryImage ? imageBasePath + itinerary.itinerary.itineraryImage : imageBasePath + 'images/itineraryImages/image-not-found.png'}/>
     </div>
   )
 }

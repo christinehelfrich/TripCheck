@@ -6,3 +6,7 @@ div.itinerary-card {
     border-radius: 0.5rem;
     cursor: pointer;
 }
+
+div.itinerary-card .itinerary-card-img {
+    width: 200px;
+}

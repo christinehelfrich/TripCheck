@@ -57,9 +57,9 @@ const ItineraryForm = ({onFormSubmitted, defaultFormValues, submitButtonText}) =
         formData.append('endDate', dateRange.end)
         onFormSubmitted(formData)
 
-      //   for (var pair of formData.entries()) {
-      //     console.log(pair[0]+ ', ' + pair[1]); 
-      // }
+        for (var pair of formData.entries()) {
+          console.log(pair[0]+ ', ' + pair[1]); 
+      }
     }
 
   return (

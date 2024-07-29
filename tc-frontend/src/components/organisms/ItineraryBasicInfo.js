@@ -7,9 +7,13 @@ const ItineraryBasicInfo = ({itineraryData}) => {
     console.log(itineraryData)
 
     const onSubmit = async (formData) => {
-        console.log(formData)
-        let res = await updateItinerary(itineraryData._id, formData)
+        const req = {};
+        Array.from(formData.entries()).forEach(([key, value]) => {
+          req[key] = value;
+        })
+        let res = await updateItinerary(itineraryData._id, req)
         console.log('RES', res)
+        // handle errors, fix images
     }
     
   return (

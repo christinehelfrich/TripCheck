@@ -35,6 +35,7 @@ export const getItineraryById = (itineraryId) => {
 }
 
 export const updateItinerary = (itineraryId, itinerary) => {
+  console.log(itinerary)
   return axios.put(`${baseURL}/itinerary/${itineraryId}`, itinerary)
   .then((res) => {
     console.log('NO ERR', res)

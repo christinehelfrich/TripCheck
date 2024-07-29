@@ -1,24 +1,21 @@
 .create-itinerary{
     width: 400px;
     margin: 0 auto;
-    padding: 1rem;
-    border: 1px solid var(--secondary-color);
-    border-radius: 1rem;
 }
 
 .create-itinerary h2 {
     text-align: center;
 }
 
-.create-itinerary form label {
+.create-itinerary-form label {
     padding-right: 0.5rem;
 }
 
-.create-itinerary form input {
+.create-itinerary-form input {
     border-radius: 0.2rem;
     border: 1px solid var(--grey-color);
 }
 
-.create-itinerary form div {
-    padding: 0.5rem;
+.create-itinerary-form div {
+    padding: 0.25rem;
 }

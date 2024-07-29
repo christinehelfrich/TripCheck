@@ -16,6 +16,11 @@ div.itinerary-card p {
     margin-left: 1.2rem;
 }
 
+div.itinerary-card p span.itinerary-card-date {
+    margin-left: 1.2rem;
+    font-size: 10px;
+}
+
 div.itinerary-card .itinerary-card-img {
     width: 100%;
     border-radius: var(--card_border_radius) var(--card_border_radius) 0 0;

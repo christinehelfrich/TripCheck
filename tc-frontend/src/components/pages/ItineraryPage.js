@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useLocation, useNavigate } from 'react-router-dom'
 import { getItineraryById } from '../../services/backend/itinerariesService'
+import ItineraryBasicInfo from '../organisms/ItineraryBasicInfo'
 
 const ItineraryPage = () => {
     const { itineraryId } = useParams()
@@ -38,8 +39,8 @@ const ItineraryPage = () => {
     <div>
         {showCreateSuccessMessage && (<div className='success-panel'>Successfully Created!</div>)}
         {errorMessage !== '' && (<div className='error-panel'>{errorMessage}</div>)}
-      itinerary page!
-      <p>{itinerary.itineraryName}</p>
+      <h2>Your {itinerary.itineraryName} Itinerary</h2>
+      <ItineraryBasicInfo itineraryData={itinerary}></ItineraryBasicInfo>
     </div>
   )
 }

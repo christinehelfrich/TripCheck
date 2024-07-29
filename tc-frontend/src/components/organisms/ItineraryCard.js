@@ -9,12 +9,19 @@ const ItineraryCard = (itinerary) => {
   const onClickCard = () => {
     navigate(`/itinerary/${itinerary.itinerary._id}`)
   }
-  console.log(itinerary.itinerary.itineraryImage)
+
+  const startDate = new Date(itinerary.itinerary.startDate)
+  const endDate = new Date(itinerary.itinerary.endDate)
 
   return (
     <div className='itinerary-card' onClick={onClickCard}>
     <img className='itinerary-card-img' alt={itinerary.itinerary.itineraryName + '-cover-image'} src={itinerary.itinerary.itineraryImage ? imageBasePath + itinerary.itinerary.itineraryImage : imageBasePath + 'images/itineraryImages/image-not-found.png'}/>
-    <p>{itinerary.itinerary.itineraryName}</p>
+    <p>{itinerary.itinerary.itineraryName}
+    {itinerary.itinerary.startDate !== undefined && (
+      <span className='itinerary-card-date'>{startDate.toLocaleDateString()} - {endDate.toLocaleDateString()}</span>
+    )}
+    </p>
+
     </div>
   )
 }

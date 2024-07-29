@@ -93,3 +93,9 @@ p, label, button, input {
   font-size: 14px;
 }
 
+.form-container {
+  padding: 1rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 1rem;
+}
+

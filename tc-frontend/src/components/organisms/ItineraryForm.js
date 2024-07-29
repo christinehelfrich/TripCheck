@@ -1,10 +1,11 @@
-import React, { useState }  from 'react'
+import React, { useEffect, useState }  from 'react'
 import '../../styles/CreateItinerary.css'
 import { useForm } from 'react-hook-form';
 import {useSelector} from "react-redux"
 import DateRangePickerItem from '../atoms/DateRangePickerItem';
+const imageBasePath = 'https://raw.githubusercontent.com/christinehelfrich/TripCheck/master/tc-backend/'
 
-const ItineraryForm = ({onFormSubmitted, defaultFormValues}) => {
+const ItineraryForm = ({onFormSubmitted, defaultFormValues, submitButtonText}) => {
 
     const [isFormEdited, setIsFormEdited] = useState(false)
     const [coverImage, setCoverImage] = useState({})
@@ -14,14 +15,20 @@ const ItineraryForm = ({onFormSubmitted, defaultFormValues}) => {
     const user = useSelector((state) => {
         return state.user.user
         });
-        
+
     const {
         register,
         handleSubmit,
         getValues,
+        setValue,
       } = useForm({
         defaultValues: defaultFormValues
       });
+
+      useEffect(() => {
+        setValue("itineraryImage", defaultFormValues?.itineraryImage)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [])
 
     const onFormChange = (event) => {
       let currentValues = getValues()
@@ -74,7 +81,7 @@ const ItineraryForm = ({onFormSubmitted, defaultFormValues}) => {
 
             <div>
             <label>Date Range</label>
-             <DateRangePickerItem onDateRangeSelected={handleDateRangeSelected}></DateRangePickerItem>
+             <DateRangePickerItem onDateRangeSelected={handleDateRangeSelected} defaultDates={{start: defaultFormValues?.startDate, end: defaultFormValues?.endDate}}></DateRangePickerItem>
             </div>
 
             <div>
@@ -99,10 +106,17 @@ const ItineraryForm = ({onFormSubmitted, defaultFormValues}) => {
               />
             </div>
 
-            <input className='button-primary' type="submit" disabled={!isFormValid} aria-disabled={!isFormEdited} value='Create' />
+            <div>
+            {defaultFormValues?.itineraryImage !== undefined && (
+                <img style={{width: "100px"}} alt={defaultFormValues?.itineraryName + '-cover-image'} src={defaultFormValues?.itineraryImage ? imageBasePath + defaultFormValues?.itineraryImage : imageBasePath + 'images/itineraryImages/image-not-found.png'}></img>
+            )}
+            </div>
+
+            <input className='button-primary' type="submit" disabled={!isFormValid} aria-disabled={!isFormEdited} value={submitButtonText} />
             
         </form>
       
+
     </div>
   )
 }

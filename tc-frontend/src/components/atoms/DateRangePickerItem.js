@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import DatePicker from "react-multi-date-picker"
 
 
-const DateRangePickerItem = ({onDateRangeSelected}) => {
+const DateRangePickerItem = ({onDateRangeSelected, defaultDates}) => {
 
-  const [range, setRange] = useState({start: null, end: null});
+  const [range, setRange] = useState({start: defaultDates.start, end: defaultDates.end});
   
   const onDateChange = (dates) => {
     

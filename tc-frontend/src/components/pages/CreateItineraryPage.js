@@ -25,7 +25,7 @@ const CreateItineraryPage = () => {
         {errorMessage !== '' && (
           <div className='error-panel'>{errorMessage}</div>
         )}
-        <ItineraryForm onFormSubmitted={onSubmit}></ItineraryForm>
+        <ItineraryForm onFormSubmitted={onSubmit} submitButtonText={'Create'}></ItineraryForm>
     </div>
   )
 }

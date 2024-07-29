@@ -16,10 +16,12 @@ const itinerarySchema = new mongoose.Schema({
         type: String
     },
     startDate: {
-        type: Date
+        type: Date,
+        required: true
     },
     endDate: {
         type: Date,
+        required: true,
     }
 
     

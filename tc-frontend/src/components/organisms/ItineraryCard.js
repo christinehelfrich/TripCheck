@@ -13,8 +13,8 @@ const ItineraryCard = (itinerary) => {
 
   return (
     <div className='itinerary-card' onClick={onClickCard}>
-      <p>{itinerary.itinerary.itineraryName}</p>
     <img className='itinerary-card-img' alt={itinerary.itinerary.itineraryName + '-cover-image'} src={itinerary.itinerary.itineraryImage ? imageBasePath + itinerary.itinerary.itineraryImage : imageBasePath + 'images/itineraryImages/image-not-found.png'}/>
+    <p>{itinerary.itinerary.itineraryName}</p>
     </div>
   )
 }

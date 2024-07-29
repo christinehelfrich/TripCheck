@@ -9,7 +9,6 @@ const ItineraryPage = () => {
     const [itinerary, setItinerary] = useState({})
     const [showCreateSuccessMessage, setShowCreateSuccessMessage] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
-    console.log(itineraryId)
 
     useEffect(() => {
         if(state?.showCreateSuccess){
@@ -20,6 +19,7 @@ const ItineraryPage = () => {
           }
 
         fetchItineraryById()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const fetchItineraryById = async () => {

@@ -7,11 +7,16 @@ div.itinerary-card {
     padding: 0;
     margin: 15px 10px;
     border-radius: var(--card_border_radius);
-    background-color: red;
     cursor: pointer;
     height: fit-content;
+    background-color: rgb(209, 207, 207);
+}
+
+div.itinerary-card p {
+    margin-left: 1.2rem;
 }
 
 div.itinerary-card .itinerary-card-img {
-    width: 200px;
+    width: 100%;
+    border-radius: var(--card_border_radius) var(--card_border_radius) 0 0;
 }

@@ -3,6 +3,7 @@
 :root {
   --primary-color: #e65f39;
   --secondary-color: #f6a02f;
+  --grey-color: rgb(189, 188, 188);
   --error-color: rgb(214, 23, 23);
   --success-color: rgb(22, 172, 69);
   /* card dimensions */
@@ -39,6 +40,12 @@ code {
 .button-primary:hover {
   background-color: white;
   color: var(--primary-color);
+  text-decoration: none !important;
+}
+
+.button-primary:disabled {
+  background-color: lightgrey;
+  color: white;
   text-decoration: none !important;
 }
 

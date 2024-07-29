@@ -4,6 +4,7 @@ import '../../styles/CreateItinerary.css'
 import { createItinerary } from '../../services/backend/itinerariesService';
 import {useSelector} from "react-redux"
 import { useNavigate } from 'react-router-dom'
+import DateRangePickerItem from '../atoms/DateRangePickerItem';
 
 const CreateItineraryPage = () => {
     const navigate = useNavigate()
@@ -11,12 +12,15 @@ const CreateItineraryPage = () => {
     const [isFormEdited, setIsFormEdited] = useState(false)
     const [errorMessage, setErrorMessage] = useState('');
     const [coverImage, setCoverImage] = useState({})
+    const [dateRange, setDateRange] = useState({})
+    const [isFormValid, setIsFormValid] = useState(false)
     const user = useSelector((state) => {
         return state.user.user
         });
     const {
         register,
         handleSubmit,
+        getValues,
         // reset,
         // setValue,
         // watch,
@@ -26,7 +30,15 @@ const CreateItineraryPage = () => {
       });
 
       const onFormChange = (event) => {
+        let currentValues = getValues()
+        
         setIsFormEdited(true)
+        setIsFormValid(currentValues.itineraryName !== '' && dateRange.start !== undefined && dateRange.end !== undefined)
+      }
+
+      const handleDateRangeSelected = (event) => {
+        onFormChange(event)
+        setDateRange(event)
       }
 
       const onSubmit = async (event) => {
@@ -37,6 +49,9 @@ const CreateItineraryPage = () => {
         formData.append('ownerId', user.user._id)
         formData.append('description', event.description)
         formData.append('itineraryImage', coverImage)
+        formData.append('startDate', dateRange.start)
+        formData.append('endDate', dateRange.end)
+
       //   for (var pair of formData.entries()) {
       //     console.log(pair[0]+ ', ' + pair[1]); 
       // }
@@ -63,6 +78,7 @@ const CreateItineraryPage = () => {
             <div>
                 <label>Itinerary Name</label>
                 <input 
+                required
                 type="text"
                 name="itineraryName" 
                 {...register("itineraryName", {
@@ -70,6 +86,15 @@ const CreateItineraryPage = () => {
                 })}
                 />
             </div>
+
+
+            <div>
+            <label>Date Range</label>
+             <DateRangePickerItem onDateRangeSelected={handleDateRangeSelected}></DateRangePickerItem>
+            </div>
+
+
+
 
             <div>
                 <label>Description (optional)</label>
@@ -93,7 +118,7 @@ const CreateItineraryPage = () => {
               />
             </div>
 
-            <input className='button-primary' type="submit" disabled={!isFormEdited} aria-disabled={!isFormEdited} value='Create' />
+            <input className='button-primary' type="submit" disabled={!isFormValid} aria-disabled={!isFormEdited} value='Create' />
             
         </form>
     </div>

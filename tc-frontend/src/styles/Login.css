@@ -16,7 +16,7 @@
 
 .login-container form input {
     border-radius: 0.2rem;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--grey-color);
 }
 
 .login-container form div {

@@ -7,6 +7,7 @@ module.exports.getItineraries = async (req, res) => {
     res.send(itineraries)
 }
 
+
 module.exports.getItineraryById = async (req, res) => {
     const {id} = req.params
     const Itinerary = await ItineraryModel.findById(id)

@@ -11,6 +11,7 @@ const ItineraryPage = () => {
     const [itinerary, setItinerary] = useState({})
     const [showCreateSuccessMessage, setShowCreateSuccessMessage] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
+    const [showUpdateSuccess, setShowUpdateSuccess] = useState(false)
 
     useEffect(() => {
         if(state?.showCreateSuccess){
@@ -40,6 +41,7 @@ const ItineraryPage = () => {
   return (
     <div>
         {showCreateSuccessMessage && (<div className='success-panel'>Successfully Created!</div>)}
+        {showUpdateSuccess && (<div className='success-panel'>Successfully Updated!</div>)}
         {errorMessage !== '' && (<div className='error-panel'>{errorMessage}</div>)}
         {isLoading && (
             <p>loading....</p>

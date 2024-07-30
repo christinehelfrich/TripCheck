@@ -9,7 +9,7 @@ const ItineraryForm = ({onFormSubmitted, defaultFormValues, submitButtonText}) =
 
     const [isFormEdited, setIsFormEdited] = useState(false)
     const [coverImage, setCoverImage] = useState({})
-    const [dateRange, setDateRange] = useState({})
+    const [dateRange, setDateRange] = useState({start: defaultFormValues?.startDate, end: defaultFormValues?.endDate})
     const [isFormValid, setIsFormValid] = useState(false)
 
     const user = useSelector((state) => {
@@ -33,16 +33,19 @@ const ItineraryForm = ({onFormSubmitted, defaultFormValues, submitButtonText}) =
     const onFormChange = (event) => {
       let currentValues = getValues()
       setIsFormEdited(true)
-      setIsFormValid(currentValues.itineraryName !== '' && dateRange.start !== undefined && dateRange.end !== undefined)
+      console.log(event)
+      console.log(dateRange)
+      setIsFormValid(currentValues.itineraryName !== '' && ((dateRange.start !== undefined && dateRange.end !== undefined) || (event.start !== undefined && event.end !== undefined)))
     }
 
     const handleDateRangeSelected = (event) => {
-      onFormChange(event)
       setDateRange(event)
+      onFormChange(event)
     }
 
     const handlePhoto = (e) => {
       setCoverImage(e.target.files[0])
+      onFormChange(e)
     }
 
     const onSubmit = async (event) => {

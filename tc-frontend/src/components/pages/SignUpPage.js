@@ -1,22 +1,12 @@
 import React, { useState } from 'react'
-import { useForm } from 'react-hook-form';
 import '../../styles/Signup.css'
 import { createProfile } from '../../services/backend/profileService';
 import { useNavigate } from 'react-router-dom'
+import ProfileForm from '../organisms/ProfileForm';
 
 const SignUpPage = () => {
   const navigate = useNavigate()
-    const [isFormEdited, setIsFormEdited] = useState(false)
     const [errorMessage, setErrorMessage] = useState('');
-    const {
-        register,
-        handleSubmit,
-      } = useForm({
-      });
-
-      const onFormChange = (event) => {
-        setIsFormEdited(true)
-      }
 
     const onSubmit = async (event) => {
         let res = await createProfile(event)
@@ -36,43 +26,7 @@ const SignUpPage = () => {
         {errorMessage !== '' && (
           <div className='error-panel'>{errorMessage}</div>
         )}
-        <form className='createProfileForm' onSubmit={handleSubmit(onSubmit)}>
-            <div>
-                <label>Name</label>
-                <input 
-                type="text"
-                name="name" 
-                {...register("name", {
-                  onChange: (e) => {onFormChange(e)}
-                })}
-                />
-            </div>
-
-            <div>
-                <label>Email</label>
-                <input 
-                type="text"
-                name="email" 
-                {...register("email", {
-                  onChange: (e) => {onFormChange(e)}
-                })}
-                />
-            </div>
-
-            <div>
-                <label>Password</label>
-                <input 
-                type="text"
-                name="password" 
-                {...register("password", {
-                  onChange: (e) => {onFormChange(e)}
-                })}
-                />
-            </div>
-
-            <input className='button-primary' type="submit" disabled={!isFormEdited} aria-disabled={!isFormEdited} value='Submit' />
-            
-        </form>
+        <ProfileForm onFormSubmitted={onSubmit} submitButtonText={'Submit'}></ProfileForm>
     </div>
   )
 }

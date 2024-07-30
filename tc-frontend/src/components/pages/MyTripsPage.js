@@ -28,7 +28,7 @@ const MyTripsPage = () => {
     {!isLoading && (
         <div className='my-trips'>
         {itineraries.map((itinerary, index) => (
-            <ItineraryCard itinerary={itinerary}></ItineraryCard>
+            <ItineraryCard key={index} itinerary={itinerary}></ItineraryCard>
         ))}
         </div>
     )}

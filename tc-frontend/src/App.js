@@ -10,6 +10,7 @@ import MyTripsPage from "./components/pages/MyTripsPage";
 import CreateItineraryPage from "./components/pages/CreateItineraryPage";
 import ItineraryPage from "./components/pages/ItineraryPage";
 import AuthGuardedRoute from "./components/auth/AuthGuardedRoute";
+import MyProfilePage from "./components/pages/MyProfilePage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/home" element={<HomePage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/myprofile" element={<MyProfilePage />} />
       <Route path="/mytrips" element={
                   <AuthGuardedRoute>  
                     <MyTripsPage />

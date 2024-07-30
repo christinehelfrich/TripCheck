@@ -14,7 +14,6 @@ const CreateItineraryPage = () => {
         Array.from(formData.entries()).forEach(([key, value]) => {
           req[key] = value;
         })
-        console.log(req)
         let res = await createItinerary(formData)
         if(res.status === 201) {
             // redirect to itinerary page

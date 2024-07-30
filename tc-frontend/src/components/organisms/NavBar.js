@@ -27,6 +27,7 @@ const NavBar = () => {
             <>
                 <li><Link className='navLink' to={'/createitinerary'}><p>Create Itinerary</p></Link></li>
                 <li><Link className='navLink' to={'/mytrips'}><p>My Trips</p></Link></li>
+                <li><Link className='navLink' to={'/myprofile'}><p>My Profile</p></Link></li>
                 <li><Link className='navLink' onClick={onLogout}><p className='button-primary'>Log Out</p></Link></li>
             </>
         )}

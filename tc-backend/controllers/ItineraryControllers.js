@@ -31,7 +31,7 @@ module.exports.updateItinerary = (req, res) => {
     const {id} = req.params
     const itinerary = req.body
     console.log("***", id, "****")
-    console.log("***", itinerary, "****")
+    console.log("***", req, "****")
 
 
     ItineraryModel.findByIdAndUpdate(id, itinerary)

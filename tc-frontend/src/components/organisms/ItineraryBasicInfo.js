@@ -15,7 +15,8 @@ const ItineraryBasicInfo = ({itineraryData}) => {
         Array.from(formData.entries()).forEach(([key, value]) => {
           req[key] = value;
         })
-        let res = await updateItinerary(itineraryData._id, req)
+        console.log(req)
+        let res = await updateItinerary(itineraryData._id, formData)
         if(res.status === 200) {
           // redirect to itinerary page
           navigate(`/itinerary/${res.data._id}`, {state: {showCreateSuccess: true}})

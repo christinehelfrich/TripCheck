@@ -52,7 +52,9 @@ const ItineraryForm = ({onFormSubmitted, defaultFormValues, submitButtonText}) =
         formData.append('itineraryName', event.itineraryName)
         formData.append('ownerId', user.user._id)
         formData.append('description', event.description)
-        formData.append('itineraryImage', coverImage)
+        if(coverImage?.name !== undefined) {
+          formData.append('itineraryImage', coverImage)
+        }
         formData.append('startDate', dateRange.start)
         formData.append('endDate', dateRange.end)
         onFormSubmitted(formData)

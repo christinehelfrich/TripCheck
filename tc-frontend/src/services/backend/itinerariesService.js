@@ -2,6 +2,7 @@ import axios from "axios";
 import { baseURL } from "../../utils/constants";
 
 export const createItinerary = (itinerary) => {
+  console.log('payload-save', itinerary)
     return axios.post(`${baseURL}/itinerary`, itinerary)
     .then((res) => {
         return res
@@ -35,7 +36,7 @@ export const getItineraryById = (itineraryId) => {
 }
 
 export const updateItinerary = (itineraryId, itinerary) => {
-  console.log(itinerary)
+  console.log('payload', itinerary)
   return axios.put(`${baseURL}/itinerary/${itineraryId}`, itinerary)
   .then((res) => {
     console.log('NO ERR', res)

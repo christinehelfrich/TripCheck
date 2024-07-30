@@ -30,8 +30,9 @@ module.exports.saveItinerary = (req, res) => {
 module.exports.updateItinerary = (req, res) => {
     const {id} = req.params
     const itinerary = req.body
-    console.log("***", id, "****")
-    console.log("***", req, "****")
+    if(req?.file?.path !== undefined) {
+        itinerary.itineraryImage = req?.file?.path
+    }
 
 
     ItineraryModel.findByIdAndUpdate(id, itinerary)

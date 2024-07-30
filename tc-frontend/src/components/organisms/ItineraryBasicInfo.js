@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../styles/ItineraryPage.css'
 import ItineraryForm from './ItineraryForm'
 import { updateItinerary } from '../../services/backend/itinerariesService'
+import { useNavigate } from 'react-router-dom'
 
 const ItineraryBasicInfo = ({itineraryData}) => {
+
+    const navigate = useNavigate()
+    const [errorMessage, setErrorMessage] = useState('');
     console.log(itineraryData)
 
     const onSubmit = async (formData) => {
@@ -12,13 +16,20 @@ const ItineraryBasicInfo = ({itineraryData}) => {
           req[key] = value;
         })
         let res = await updateItinerary(itineraryData._id, req)
-        console.log('RES', res)
-        // handle errors, fix images
+        if(res.status === 200) {
+          // redirect to itinerary page
+          navigate(`/itinerary/${res.data._id}`, {state: {showCreateSuccess: true}})
+      } else {
+          setErrorMessage(res?.data?.msg ? res?.data?.msg : 'there was an error')
+      }
     }
     
   return (
     <>
     <h3>Basic Info</h3>
+    {errorMessage !== '' && (
+          <div className='error-panel'>{errorMessage}</div>
+        )}
     <div className='itinerary-basic-info form-container'>
         <ItineraryForm onFormSubmitted={onSubmit} defaultFormValues={itineraryData} submitButtonText={'Save Updates'}></ItineraryForm>
     </div>

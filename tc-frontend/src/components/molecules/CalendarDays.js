@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import '../../styles/Calendar.css'
 
-const CalendarDays = ({day, changeCurrentDay}) => {
+const CalendarDays = ({day, changeCurrentDay, startDate, endDate}) => {
 
     const [isLoading, setIsLoading] = useState(true)
     const [currentDays, setCurrentDays] = useState([])
     let firstDayOfMonth = new Date(day.getFullYear(), day.getMonth(), 1);
     const weekdayOfFirstDay = firstDayOfMonth.getDay();
-    
+
     const onNewDateSelected = (d) => {
       currentDays.map((cal) => {
         if(cal.selected) {
@@ -26,7 +26,7 @@ const CalendarDays = ({day, changeCurrentDay}) => {
         setCalendarList()
         setTimeout(() => {
           setIsLoading(false)
-        }, 500)
+        }, 10)
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [day])
@@ -50,7 +50,8 @@ const CalendarDays = ({day, changeCurrentDay}) => {
               number: firstDayOfMonth.getDate(),
               selected: (firstDayOfMonth.toDateString() === day.toDateString()),
               year: firstDayOfMonth.getFullYear(),
-              isToday: firstDayOfMonth.getDate() === today.getDate() && firstDayOfMonth.getMonth() === today.getMonth() && firstDayOfMonth.getYear() === today.getYear()
+              isToday: firstDayOfMonth.getDate() === today.getDate() && firstDayOfMonth.getMonth() === today.getMonth() && firstDayOfMonth.getYear() === today.getYear(),
+              isDuringItinerary: firstDayOfMonth >= new Date(startDate) && firstDayOfMonth <= new Date(endDate)
             }
 
             calList.push(calendarDay);
@@ -70,7 +71,7 @@ const CalendarDays = ({day, changeCurrentDay}) => {
       {
         currentDays.map((d) => {
           return (
-            <div className={"calendar-day" + (d.currentMonth ? " current" : "") + (d.selected ? " selected" : "") + (d.isToday ? " today" : "")}
+            <div className={"calendar-day" + (d.currentMonth ? " current" : "") + (d.selected ? " selected" : "") + (d.isToday ? " today" : "") + (d.isDuringItinerary ? " is-during-itinerary" : "")}
                   onClick={() => onNewDateSelected(d)}>
               <p>{d.number}</p>
             </div>

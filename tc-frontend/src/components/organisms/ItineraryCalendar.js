@@ -58,7 +58,13 @@ const ItineraryCalendar = ({itineraryData}) => {
               })
             }
           </div>
-          <CalendarDays day={currentDay} changeCurrentDay={changeCurrentDay} />
+          <CalendarDays day={currentDay} changeCurrentDay={changeCurrentDay} startDate={itineraryData.startDate} endDate={itineraryData.endDate}/>
+        </div>
+        <div className="calendar-day-details">
+            <h3>{currentDay.toDateString()}</h3>
+            <p><strong>Activities: </strong></p>
+            <p><strong>Transportation: </strong></p>
+            <p><strong>Night: </strong></p>
         </div>
       </div>
     </div>

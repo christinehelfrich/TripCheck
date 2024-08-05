@@ -11,3 +11,13 @@ export const createProfile = (profile) => {
     )
 }
 
+export const updateProfile = (profileId, profile) => {
+  return axios.put(`${baseURL}/profile/${profileId}`, profile)
+  .then((res) => {
+    return res
+  }, (err) => {
+    return err.response
+  }
+)
+}
+

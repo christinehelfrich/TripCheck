@@ -15,9 +15,6 @@ module.exports.getProfileById = async (req, res) => {
 
 module.exports.saveProfile = (req, res) => {
     const profile = req.body
-    console.log('****!', profile, '!****')
-
-
 
     ProfileModel.create(profile)
     .then((data) => {
@@ -32,11 +29,9 @@ module.exports.saveProfile = (req, res) => {
 module.exports.updateProfile = (req, res) => {
     const {id} = req.params
     const profile = req.body
-    console.log("***", profile, '****')
-
 
     ProfileModel.findByIdAndUpdate(id, profile)
-    .then(() => res.send("Updated Successfully..."))
+    .then(() => res.send(profile))
     .catch((err) => {
         console.log(err);
         res.send({error: err, msg: "Something went wrong!"});

@@ -10,3 +10,26 @@ div.my-trips {
     grid-auto-rows: var(--row_increment);
     justify-content: center;
 }
+
+.header-profile-content {
+    margin: 0 auto;
+    width: 400px;
+    text-align: center;
+
+}
+
+.header-profile-content img {
+    border-radius: 10rem;
+}
+.filters {
+    cursor: pointer;
+}
+
+.selected {
+    text-decoration: underline;
+}
+
+.header-profile-content .navLink span:hover {
+    background-color: var(--grey-color);
+}
+

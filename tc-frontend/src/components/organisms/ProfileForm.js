@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import '../../styles/Signup.css'
 
-const ProfileForm = ({onFormSubmitted, defaultFormValues, submitButtonText}) => {
+const ProfileForm = ({onFormSubmitted, defaultFormValues, submitButtonText, showPassword}) => {
 
     const [isFormEdited, setIsFormEdited] = useState(false)
     const {
@@ -17,7 +17,6 @@ const ProfileForm = ({onFormSubmitted, defaultFormValues, submitButtonText}) => 
       }
 
     const onSubmit = async (event) => {
-        console.log('onsubmit')
         onFormSubmitted(event)
     }
   return (
@@ -44,7 +43,8 @@ const ProfileForm = ({onFormSubmitted, defaultFormValues, submitButtonText}) => 
                 })}
                 />
             </div>
-
+            
+            {showPassword && (
             <div>
                 <label>Password</label>
                 <input 
@@ -54,7 +54,8 @@ const ProfileForm = ({onFormSubmitted, defaultFormValues, submitButtonText}) => 
                   onChange: (e) => {onFormChange(e)}
                 })}
                 />
-            </div>
+            </div> 
+            )}
 
             <input className='button-primary' type="submit" disabled={!isFormEdited} aria-disabled={!isFormEdited} value={submitButtonText} />
             

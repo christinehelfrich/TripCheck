@@ -21,13 +21,13 @@
     padding: 0.5rem;
 }
 
-.navbar .navlist li .navLink {
+.navLink {
     text-decoration: none;
     color: black;
     font-weight: bold;
 }
 
-.navbar .navlist li .navLink:hover {
+.navLink:hover {
     text-decoration: underline;
 }
 

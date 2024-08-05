@@ -11,4 +11,5 @@ router.put("/itinerary/:id", uploadFile.single('itineraryImage'), updateItinerar
 router.delete("/itinerary/:id", deleteItinerary)
 
 
+
 module.exports = router

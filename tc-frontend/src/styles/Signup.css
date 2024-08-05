@@ -1,24 +1,21 @@
 .signup-container {
     width: 300px;
     margin: 0 auto;
-    padding: 1rem;
-    border: 1px solid var(--secondary-color);
-    border-radius: 1rem;
 }
 
 .signup-container h2 {
     text-align: center;
 }
 
-.signup-container form label {
+form.createProfileForm label {
     padding-right: 0.5rem;
 }
 
-.signup-container form input {
+form.createProfileForm input {
     border-radius: 0.2rem;
     border: 1px solid var(--grey-color);
 }
 
-.signup-container form div {
+form.createProfileForm div {
     padding: 0.5rem;
 }

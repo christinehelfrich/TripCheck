@@ -21,12 +21,12 @@ const SignUpPage = () => {
 
     }
   return (
-    <div className='signup-container'>
+    <div className='signup-container form-container'>
         <h2>Create an Account</h2>
         {errorMessage !== '' && (
           <div className='error-panel'>{errorMessage}</div>
         )}
-        <ProfileForm onFormSubmitted={onSubmit} submitButtonText={'Submit'}></ProfileForm>
+        <ProfileForm onFormSubmitted={onSubmit} submitButtonText={'Submit'} showPassword={true}></ProfileForm>
     </div>
   )
 }

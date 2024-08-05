@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useLocation, useNavigate } from 'react-router-dom'
 import { getItineraryById } from '../../services/backend/itinerariesService'
 import ItineraryBasicInfo from '../organisms/ItineraryBasicInfo'
+import ItineraryCalendar from '../organisms/ItineraryCalendar'
 
 const ItineraryPage = () => {
     const { itineraryId } = useParams()
@@ -50,6 +51,7 @@ const ItineraryPage = () => {
             <>
             <h2>Your {itinerary.itineraryName} Itinerary</h2>
             <ItineraryBasicInfo itineraryData={itinerary}></ItineraryBasicInfo>
+            <ItineraryCalendar itineraryData={itinerary}></ItineraryCalendar>
             </>
         )}
     </div>

@@ -12,16 +12,13 @@ const MyTripsPage = () => {
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-        console.log('use eff')
         setIsLoading(true)
         fetchItineraries()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const fetchItineraries = async () => {
-        console.log('fetching...')
         let res = await getAllItineraries();
-        console.log('res', res)
         res?.data !== undefined ? setItineraries(res.data) : setItineraries([])
         onFilterStatusUpdate('future', res?.data)
         setIsLoading(false)
@@ -30,7 +27,6 @@ const MyTripsPage = () => {
     const onFilterStatusUpdate = (event, unfilteredItineraries = itineraries) => {
         setIsLoading(true)
         let today = new Date()
-        console.log('itineraroes', unfilteredItineraries)
         const filteredItinerariess = unfilteredItineraries.filter((item) => {
             let endDate = new Date(item.endDate)
             let startDate = new Date(item.startDate)
@@ -42,7 +38,6 @@ const MyTripsPage = () => {
                 return startDate <= today && endDate >= today
             }
         })
-        console.log('filteredItinerariess', filteredItinerariess)
         setFilteredItineraries(filteredItinerariess)
         setIsLoading(false)
         // TO DO: finish filtering itineraries

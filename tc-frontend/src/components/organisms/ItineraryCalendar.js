@@ -7,7 +7,7 @@ const ItineraryCalendar = ({itineraryData}) => {
     const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const months = ['January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'];
-    const [currentDay, setCurrentDay] = useState(new Date())
+    const [currentDay, setCurrentDay] = useState(new Date(itineraryData.startDate))
     const [errorMessage, setErrorMessage] = useState('');
 
     const changeCurrentDay = (day) => {
@@ -15,21 +15,16 @@ const ItineraryCalendar = ({itineraryData}) => {
       }
 
     const nextMonth = () => {
+        let nextMonthDate = new Date(currentDay.setMonth(currentDay.getMonth() + 1))
+        changeCurrentDay({year: nextMonthDate.getFullYear(), month: nextMonthDate.getMonth(), number: nextMonthDate.getDate()})
 
     }
 
     const perviousMonth = () => {
-        
+        let prevMonthDate = new Date(currentDay.setMonth(currentDay.getMonth() - 1))
+        changeCurrentDay({year: prevMonthDate.getFullYear(), month: prevMonthDate.getMonth(), number: prevMonthDate.getDate()})
     }
     
-    // const nextDay = () => {
-    //     setCurrentDay(new Date(currentDay.setDate(currentDay.getDate() + 1)) );
-    //   }
-    
-    // const previousDay = () => {
-    //     setCurrentDay(new Date(currentDay.setDate(currentDay.getDate() - 1)) );
-    //   }
-
   return (
     <>
     <h3>Planned Itinerary</h3>
@@ -53,20 +48,6 @@ const ItineraryCalendar = ({itineraryData}) => {
               &rarr;
             </span>
         </button>
-
-          {/* <div className="tools">
-            <button onClick={previousDay}>
-              <span className="material-icons">
-              &larr;
-                </span>
-            </button>
-            <p>{months[currentDay.getMonth()].substring(0, 3)} {currentDay.getDate()}</p>
-            <button onClick={nextDay}>
-              <span className="material-icons">
-              &rarr;
-                </span>
-            </button>
-          </div> */}
 
         </div>
         <div className="calendar-body">

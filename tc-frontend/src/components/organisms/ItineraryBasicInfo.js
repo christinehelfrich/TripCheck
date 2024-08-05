@@ -8,14 +8,12 @@ const ItineraryBasicInfo = ({itineraryData}) => {
 
     const navigate = useNavigate()
     const [errorMessage, setErrorMessage] = useState('');
-    console.log(itineraryData)
 
     const onSubmit = async (formData) => {
         const req = {};
         Array.from(formData.entries()).forEach(([key, value]) => {
           req[key] = value;
         })
-        console.log(req)
         let res = await updateItinerary(itineraryData._id, formData)
         if(res.status === 200) {
           // redirect to itinerary page

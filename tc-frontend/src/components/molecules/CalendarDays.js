@@ -29,7 +29,7 @@ const CalendarDays = ({day, changeCurrentDay}) => {
         }, 500)
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [day])
 
     const setCalendarList = () => {
         let calList = []
@@ -52,7 +52,7 @@ const CalendarDays = ({day, changeCurrentDay}) => {
               year: firstDayOfMonth.getFullYear(),
               isToday: firstDayOfMonth.getDate() === today.getDate() && firstDayOfMonth.getMonth() === today.getMonth() && firstDayOfMonth.getYear() === today.getYear()
             }
-            
+
             calList.push(calendarDay);
           }
           setCurrentDays(calList)

@@ -113,7 +113,7 @@ const ItineraryForm = ({onFormSubmitted, defaultFormValues, submitButtonText}) =
 
             <div>
             {defaultFormValues?.itineraryImage !== undefined && (
-                <img style={{width: "100px"}} alt={defaultFormValues?.itineraryName + '-cover-image'} src={defaultFormValues?.itineraryImage ? imageBasePath + defaultFormValues?.itineraryImage : imageBasePath + 'images/itineraryImages/image-not-found.png'}></img>
+                <img style={{width: "50px"}} alt={defaultFormValues?.itineraryName + '-cover-image'} src={defaultFormValues?.itineraryImage ? imageBasePath + defaultFormValues?.itineraryImage : imageBasePath + 'images/itineraryImages/image-not-found.png'}></img>
             )}
             </div>
 

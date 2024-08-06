@@ -24,6 +24,10 @@ const ItineraryCalendar = ({itineraryData}) => {
         let prevMonthDate = new Date(currentDay.setMonth(currentDay.getMonth() - 1))
         changeCurrentDay({year: prevMonthDate.getFullYear(), month: prevMonthDate.getMonth(), number: prevMonthDate.getDate()})
     }
+
+    const addAttribute = (type) => {
+      console.log(type)
+    }
     
   return (
     <>
@@ -62,9 +66,9 @@ const ItineraryCalendar = ({itineraryData}) => {
         </div>
         <div className="calendar-day-details">
             <h3>{currentDay.toDateString()}</h3>
-            <p><strong>Activities: </strong></p>
-            <p><strong>Transportation: </strong></p>
-            <p><strong>Night: </strong></p>
+            <button className='button-secondary' onClick={() => addAttribute('activity')}> + add activity</button>&emsp; 
+            <button className='button-secondary' onClick={() => addAttribute('night')}> + add night</button>&emsp; 
+            <button className='button-secondary' onClick={() => addAttribute('transportation')}> + add transportation</button>&emsp; 
         </div>
       </div>
     </div>

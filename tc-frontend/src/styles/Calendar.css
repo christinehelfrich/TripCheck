@@ -146,3 +146,11 @@
   .is-during-itinerary p {
     color: white;
   }
+
+  .calendar-day-details input {
+    border-radius: 0.2rem;
+    border: 1px solid var(--grey-color);
+    margin: 0.5rem;
+  }
+
+

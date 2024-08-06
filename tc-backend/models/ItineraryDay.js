@@ -1,12 +1,17 @@
-const ItineraryAttributes = {
-    attributeType: String,
-    attributeContent: String
-}
+// const mongoose = require("mongoose")
 
-module.exports.ItineraryDay = {
-    date: Date,
-    attributes: [ItineraryAttributes]
-}
+// const ItineraryAttributes = {
+//     attributeType: String,
+//     attributeContent: String
+// }
+
+
+// const ItineraryDay = new mongoose.Schema({
+//     date: {
+//         type: Date
+//     },
+//     attributes: [ItineraryAttributes]
+// })
 
 
 // [

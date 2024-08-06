@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const ItineraryDay = require("./ItineraryDay")
+// const ItineraryDay = require("./ItineraryDay")
 
 const itinerarySchema = new mongoose.Schema({
     itineraryName: {
@@ -25,7 +25,7 @@ const itinerarySchema = new mongoose.Schema({
         required: true,
     },
     calendar: {
-        type: [ItineraryDay],
+        type: [Object],
         required: false,
         default: []
     }

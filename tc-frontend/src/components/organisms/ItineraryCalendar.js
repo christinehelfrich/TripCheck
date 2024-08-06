@@ -1,7 +1,8 @@
 import React, { useState }  from 'react'
-import CalendarDays from '../molecules/CalendarDays';
+import CalendarDays from './Calendar/CalendarDays';
 import '../../styles/Calendar.css'
 import { updateItinerary } from '../../services/backend/itinerariesService';
+import CalendarDayDetails from './Calendar/CalendarDayDetails';
 
 const ItineraryCalendar = ({itineraryData}) => {
 
@@ -16,7 +17,11 @@ const ItineraryCalendar = ({itineraryData}) => {
 
     const changeCurrentDay = (day) => {
         setCurrentDay(new Date(day.year, day.month, day.number));
-        let dt = new Date(day.date)
+        let dt = new Date()
+        dt.setDate(day.number)
+        dt.setMonth(day.month)
+        dt.setYear(day.year)
+        dt.setHours(0,0,0,0);
         const currItin = calendar.filter((d) => {
           return d.date === dt.toISOString()
         })
@@ -36,10 +41,6 @@ const ItineraryCalendar = ({itineraryData}) => {
     const perviousMonth = () => {
         let prevMonthDate = new Date(currentDay.setMonth(currentDay.getMonth() - 1))
         changeCurrentDay({year: prevMonthDate.getFullYear(), month: prevMonthDate.getMonth(), number: prevMonthDate.getDate()})
-    }
-
-    const addAttribute = (type) => {
-      console.log(type)
     }
 
     const onUpdateItinerary = async () => {
@@ -138,25 +139,7 @@ const ItineraryCalendar = ({itineraryData}) => {
           </div>
           <CalendarDays day={currentDay} changeCurrentDay={changeCurrentDay} startDate={itineraryData.startDate} endDate={itineraryData.endDate}/>
         </div>
-        <div className="calendar-day-details">
-            <h3>{currentDay.toDateString()}</h3>
-            <button className='button-secondary' onClick={() => addAttribute('activity')}> + add activity</button>&emsp; 
-            <button className='button-secondary' onClick={() => addAttribute('night')}> + add night</button>&emsp; 
-            <button className='button-secondary' onClick={() => addAttribute('transportation')}> + add transportation</button>
-            <br/>
-            <br/>
-            {currentDayItinerary?.attributes?.length > 0 && (
-              currentDayItinerary.attributes.map((attribute) => {
-                return (
-                  <div>
-                    <label>{attribute.attributeType}</label><input type='text' value={attribute.attributeContent}/>
-                  </div>
-                ) 
-              })
-            )}
-
-            <button className='button-primary' onClick={onUpdateItinerary}> UPDATE</button>&emsp; 
-        </div>
+        <CalendarDayDetails onUpdateItinerary={onUpdateItinerary} currentDay={currentDay} currentDayItinerary={currentDayItinerary}></CalendarDayDetails>
       </div>
     </div>
     </>

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const ItineraryDay = require("./ItineraryDay")
 
 const itinerarySchema = new mongoose.Schema({
     itineraryName: {
@@ -22,6 +23,11 @@ const itinerarySchema = new mongoose.Schema({
     endDate: {
         type: Date,
         required: true,
+    },
+    calendar: {
+        type: [ItineraryDay],
+        required: false,
+        default: []
     }
 
     

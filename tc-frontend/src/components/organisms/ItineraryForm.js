@@ -109,13 +109,13 @@ const ItineraryForm = ({onFormSubmitted, defaultFormValues, submitButtonText}) =
                   name="itineraryImage"
                   onChange={handlePhoto}
               />
+                <div>
+                {defaultFormValues?.itineraryImage !== undefined && (
+                    <img style={{width: "50px"}} alt={defaultFormValues?.itineraryName + '-cover-image'} src={defaultFormValues?.itineraryImage ? imageBasePath + defaultFormValues?.itineraryImage : imageBasePath + 'images/itineraryImages/image-not-found.png'}></img>
+                )}
+                </div>
             </div>
 
-            <div>
-            {defaultFormValues?.itineraryImage !== undefined && (
-                <img style={{width: "50px"}} alt={defaultFormValues?.itineraryName + '-cover-image'} src={defaultFormValues?.itineraryImage ? imageBasePath + defaultFormValues?.itineraryImage : imageBasePath + 'images/itineraryImages/image-not-found.png'}></img>
-            )}
-            </div>
 
             <input className='button-primary' type="submit" disabled={!isFormValid} aria-disabled={!isFormEdited} value={submitButtonText} />
             

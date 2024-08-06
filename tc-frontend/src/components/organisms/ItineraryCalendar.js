@@ -13,7 +13,6 @@ const ItineraryCalendar = ({itineraryData}) => {
     const [errorMessage, setErrorMessage] = useState('');
     const calendar = itineraryData.calendar
     const [currentDayItinerary, setCurrentDayItinerary] = useState(calendar ? calendar[0] : {})
-    console.log(currentDayItinerary)
 
     const changeCurrentDay = (day) => {
         setCurrentDay(new Date(day.year, day.month, day.number));
@@ -25,8 +24,6 @@ const ItineraryCalendar = ({itineraryData}) => {
         const currItin = calendar.filter((d) => {
           return d.date === dt.toISOString()
         })
-
-        console.log('currItin', currItin)
 
         setCurrentDayItinerary(currItin.length > 0 ? currItin[0] : [])
 

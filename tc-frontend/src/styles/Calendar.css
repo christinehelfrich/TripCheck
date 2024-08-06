@@ -9,7 +9,7 @@
   
   .calendar-header {
     width: 100%;
-    height: 50px;
+    height: 20px;
     margin: auto;
     display: flex;
     align-items: center;
@@ -60,7 +60,7 @@
   }
   
   .table-header {
-    height: 100px;
+    height: 60px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -85,7 +85,7 @@
   
   .calendar-day {
     width: auto;
-    height: min(40px);
+    height: min(30px);
     position: relative;
     border-top: 1px solid #d6d5d5;
   }

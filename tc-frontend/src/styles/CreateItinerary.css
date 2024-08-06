@@ -1,6 +1,11 @@
 .create-itinerary{
-    width: 400px;
+    width: 700px;
     margin: 0 auto;
+}
+
+.create-itinerary-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .create-itinerary h2 {
@@ -9,13 +14,19 @@
 
 .create-itinerary-form label {
     padding-right: 0.5rem;
+    font-weight: bold;
 }
 
-.create-itinerary-form input {
+.create-itinerary-form input:not(.button-primary) {
     border-radius: 0.2rem;
     border: 1px solid var(--grey-color);
+    margin: 0.2rem 0.2rem 0.2rem 1rem
 }
 
-.create-itinerary-form div {
-    padding: 0.25rem;
+.create-itinerary-form input.button-primary {
+    max-width: 8rem;
 }
+
+/* .create-itinerary-form div {
+    padding: 0.25rem;
+} */

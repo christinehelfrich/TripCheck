@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../../styles/Calendar.css'
 
-const CalendarDayDetails = ({currentDay, currentDayItinerary, onUpdateItinerary}) => {
+const CalendarDayDetails = ({currentDay, currentDayItinerary, onUpdateItinerary, onAttributeUpdated}) => {
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -24,6 +24,8 @@ const CalendarDayDetails = ({currentDay, currentDayItinerary, onUpdateItinerary}
             attributeContent: "",
           })
         }
+
+        onAttributeUpdated(currentDayItinerary)
         resetState()
         
       }

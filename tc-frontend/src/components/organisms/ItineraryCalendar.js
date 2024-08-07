@@ -40,6 +40,11 @@ const ItineraryCalendar = ({itineraryData}) => {
         changeCurrentDay({year: prevMonthDate.getFullYear(), month: prevMonthDate.getMonth(), number: prevMonthDate.getDate()})
     }
 
+    const onAttributeUpdated = (event) => {
+      setCurrentDayItinerary(event)
+      console.log('event', event)
+    }
+
     const onUpdateItinerary = async () => {
       let tempItinObj = {
         description: itineraryData.description,
@@ -136,7 +141,7 @@ const ItineraryCalendar = ({itineraryData}) => {
           </div>
           <CalendarDays day={currentDay} changeCurrentDay={changeCurrentDay} startDate={itineraryData.startDate} endDate={itineraryData.endDate}/>
         </div>
-        <CalendarDayDetails onUpdateItinerary={onUpdateItinerary} currentDay={currentDay} currentDayItinerary={currentDayItinerary}></CalendarDayDetails>
+        <CalendarDayDetails onUpdateItinerary={onUpdateItinerary} currentDay={currentDay} currentDayItinerary={currentDayItinerary} onAttributeUpdated={onAttributeUpdated}></CalendarDayDetails>
       </div>
     </div>
     </>

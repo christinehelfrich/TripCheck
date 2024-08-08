@@ -11,7 +11,7 @@ const ItineraryCalendar = ({itineraryData}) => {
     'July', 'August', 'September', 'October', 'November', 'December'];
     const [currentDay, setCurrentDay] = useState(new Date(itineraryData.startDate))
     const [errorMessage, setErrorMessage] = useState('');
-    const calendar = itineraryData.calendar
+    const [calendar, setCalendar] = useState(itineraryData.calendar)
     const [currentDayItinerary, setCurrentDayItinerary] = useState(calendar ? calendar[0] : {})
 
     const changeCurrentDay = (day) => {
@@ -42,7 +42,14 @@ const ItineraryCalendar = ({itineraryData}) => {
 
     const onAttributeUpdated = (event) => {
       setCurrentDayItinerary(event)
-      console.log('event', event)
+      let updatedCalendar = calendar.map((d) => {
+        if(d.date === event.date) {
+          return event
+        }else {
+          return d
+        }
+      })
+      setCalendar(updatedCalendar)
     }
 
     const onUpdateItinerary = async () => {
@@ -53,50 +60,7 @@ const ItineraryCalendar = ({itineraryData}) => {
         itineraryName: itineraryData.itineraryName,
         ownerId: itineraryData.ownerId,
         startDate: itineraryData.startDate,
-        calendar: [
-              {
-                  date: "2024-08-13T07:00:00.000Z",
-                  attributes: [
-                      {
-                          attributeType: 'night',
-                          attributeContent: 'hotel california'
-                      },
-                      {
-                          attributeType: 'activity',
-                          attributeContent: 'driving racecars'
-                      },
-                      {
-                          attributeType: 'activity',
-                          attributeContent: 'dinner at nobu'
-                      },
-                      {
-                          attributeType: 'transportation',
-                          attributeContent: 'rental porsche'
-                      },
-                  ]
-              },
-              {
-                date: "2024-08-14T07:00:00.000Z",
-                attributes: [
-                    {
-                        attributeType: 'night',
-                        attributeContent: 'hotel california again'
-                    },
-                    {
-                        attributeType: 'activity',
-                        attributeContent: 'beach club'
-                    },
-                    {
-                        attributeType: 'activity',
-                        attributeContent: 'erwhon'
-                    },
-                    {
-                        attributeType: 'transportation',
-                        attributeContent: 'rental porsche again'
-                    },
-                ]
-            },
-        ],
+        calendar: calendar
       }
       let res = await updateItinerary(itineraryData._id, tempItinObj)
       if(res.status === 200) {

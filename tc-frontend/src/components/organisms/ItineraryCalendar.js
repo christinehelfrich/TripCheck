@@ -11,8 +11,9 @@ const ItineraryCalendar = ({itineraryData}) => {
     'July', 'August', 'September', 'October', 'November', 'December'];
     const [currentDay, setCurrentDay] = useState(new Date(itineraryData.startDate))
     const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
     const [calendar, setCalendar] = useState(itineraryData.calendar)
-    const [currentDayItinerary, setCurrentDayItinerary] = useState(calendar ? calendar[0] : {})
+    const [currentDayItinerary, setCurrentDayItinerary] = useState(calendar.length > 0 ? calendar[0] : {date: currentDay, attributes: []})
 
     const changeCurrentDay = (day) => {
         setCurrentDay(new Date(day.year, day.month, day.number));
@@ -64,18 +65,21 @@ const ItineraryCalendar = ({itineraryData}) => {
       }
       let res = await updateItinerary(itineraryData._id, tempItinObj)
       if(res.status === 200) {
-        setErrorMessage('SUCCESS!!')
+        setSuccessMessage('SUCCESS!!')
+        setTimeout(() => {
+          setSuccessMessage('')
+        }, 5000)
     } else {
         setErrorMessage(res?.data?.msg ? res?.data?.msg : 'there was an error')
+        setTimeout(() => {
+          setErrorMessage('')
+        }, 5000)
     }
     }
     
   return (
     <>
     <h3>Planned Itinerary</h3>
-    {errorMessage !== '' && (
-          <div className='error-panel'>{errorMessage}</div>
-        )}
     <div className='itinerary-basic-info form-container'>
     <div className="calendar">
         <div className="calendar-header">
@@ -105,6 +109,12 @@ const ItineraryCalendar = ({itineraryData}) => {
           </div>
           <CalendarDays day={currentDay} changeCurrentDay={changeCurrentDay} startDate={itineraryData.startDate} endDate={itineraryData.endDate}/>
         </div>
+        {errorMessage !== '' && (
+          <div className='error-panel'>{errorMessage}</div>
+        )}
+        {successMessage !== '' && (
+              <div className='success-panel'>{successMessage}</div>
+        )}
         <CalendarDayDetails onUpdateItinerary={onUpdateItinerary} currentDay={currentDay} currentDayItinerary={currentDayItinerary} onAttributeUpdated={onAttributeUpdated}></CalendarDayDetails>
       </div>
     </div>

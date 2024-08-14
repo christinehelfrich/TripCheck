@@ -71,7 +71,7 @@ const CalendarDays = ({day, changeCurrentDay, startDate, endDate}) => {
       {
         currentDays.map((d) => {
           return (
-            <div className={"calendar-day" + (d.currentMonth ? " current" : "") + (d.selected ? " selected" : "") + (d.isToday ? " today" : "") + (d.isDuringItinerary ? " is-during-itinerary" : "")}
+            <div key={d.day} className={"calendar-day" + (d.currentMonth ? " current" : "") + (d.selected ? " selected" : "") + (d.isToday ? " today" : "") + (d.isDuringItinerary ? " is-during-itinerary" : "")}
                   onClick={() => onNewDateSelected(d)}>
               <p>{d.number}</p>
             </div>

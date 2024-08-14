@@ -119,3 +119,8 @@ p, label, button, input {
   border-radius: 1rem;
 }
 
+.password-icon {
+  cursor: pointer;
+  margin-left: 5px;
+}
+

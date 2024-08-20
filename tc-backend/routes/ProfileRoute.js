@@ -1,7 +1,8 @@
 const {Router} = require("express");
 const { login } = require("../controllers/AuthControllers");
 const {getProfiles, saveProfile, deleteProfile, updateProfile, getProfileById} = require("../controllers/ProfileControllers")
-const { isPasswordValid, encryptPassword } = require("../middleware/ProfileMiddleware")
+const { isPasswordValid, encryptPassword } = require("../middleware/ProfileMiddleware");
+const { userVerification } = require("../middleware/Authentication");
 const router = Router()
 
 router.get("/profiles", getProfiles);

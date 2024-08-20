@@ -1,19 +1,21 @@
-const express = require("express");
-const ProfileModel = require("../models/ProfileModel")
+const Profile = require("../models/ProfileModel")
+require("dotenv").config();
+const jwt = require("jsonwebtoken");
 
-module.exports.authorize = (req, res, next) => {
-    ProfileModel.findById(req.session._id)
-        .exec(function (error, user) {
-            if(error) {
-                return next(error)
-            } else {
-                if(user === null) {
-                    var err = new Error('Not authorized!');
-                    err.status = 400;
-                    return next(err)
-                } else {
-                    return res
-                }
-            }
-        })
+module.exports.userVerification = (req, res, next) => {
+  const token = req.cookies.token
+  if (!token) {
+    console.log('req TOK: ', req.cookies.token)
+    return res.json({ status: false })
+  }
+  jwt.verify(token, process.env.TOKEN_KEY, async (err, data) => {
+    console.log('data: ', data)
+    if (err) {
+     return res.json({ status: false })
+    } else {
+      const user = await Profile.findById(data.id)
+      if (user) next()
+      else return res.json({ status: false })
+    }
+  })
 }

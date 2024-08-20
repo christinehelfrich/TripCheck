@@ -46,7 +46,8 @@ const LoginPage = () => {
     const Login = async (event) => {
         let res = await login(event)
         if(res.status === 200){
-          dispatch(updateUser({user: res.data.user, isAuthenticated: true}))
+          console.log('login token', res.data.token)
+          dispatch(updateUser({user: res.data.user, isAuthenticated: true, token: res.data.token}))
           setErrorMessage('You are successfully logged in!')
           navigate("/", {state: {showLoginSuccess: true}})
         }else {

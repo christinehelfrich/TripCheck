@@ -1,0 +1,6 @@
+POST http://localhost:5002/api/login
+
+{
+    "email": "jr@email.com",
+    "password": "123!@#Qwe"
+}

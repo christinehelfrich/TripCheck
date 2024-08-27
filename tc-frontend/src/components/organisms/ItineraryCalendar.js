@@ -3,6 +3,7 @@ import CalendarDays from './Calendar/CalendarDays';
 import '../../styles/Calendar.css'
 import { updateItinerary } from '../../services/backend/itinerariesService';
 import CalendarDayDetails from './Calendar/CalendarDayDetails';
+import {useSelector} from "react-redux"
 
 const ItineraryCalendar = ({itineraryData}) => {
 
@@ -14,6 +15,9 @@ const ItineraryCalendar = ({itineraryData}) => {
     const [successMessage, setSuccessMessage] = useState('');
     const [calendar, setCalendar] = useState(itineraryData.calendar)
     const [currentDayItinerary, setCurrentDayItinerary] = useState(calendar?.length > 0 ? calendar[0] : {date: currentDay, attributes: []})
+    const user = useSelector((state) => {
+      return state.user.user
+      });
 
     const changeCurrentDay = (day) => {
         setCurrentDay(new Date(day.year, day.month, day.number));
@@ -63,7 +67,7 @@ const ItineraryCalendar = ({itineraryData}) => {
         startDate: itineraryData.startDate,
         calendar: calendar
       }
-      let res = await updateItinerary(itineraryData._id, tempItinObj)
+      let res = await updateItinerary(itineraryData._id, tempItinObj, user.token)
       if(res.status === 200) {
         setSuccessMessage('SUCCESS!!')
         setTimeout(() => {

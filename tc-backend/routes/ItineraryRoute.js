@@ -8,7 +8,7 @@ router.get("/itineraries", requireAuth, getItineraries);
 router.get("/itinerary/:id", requireAuth, getItineraryById)
 //router.post("/profile", isPasswordValid, encryptPassword, saveProfile);
 router.post("/itinerary", uploadFile.single('itineraryImage'), saveItinerary);
-router.put("/itinerary/:id", uploadFile.single('itineraryImage'), updateItinerary)
+router.put("/itinerary/:id", requireAuth, uploadFile.single('itineraryImage'), updateItinerary)
 router.delete("/itinerary/:id", deleteItinerary)
 
 

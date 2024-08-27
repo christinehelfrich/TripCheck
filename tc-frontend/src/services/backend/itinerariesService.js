@@ -38,8 +38,10 @@ export const getItineraryById = (itineraryId, token) => {
   })
 }
 
-export const updateItinerary = (itineraryId, itinerary) => {
-  return axios.put(`${baseURL}/itinerary/${itineraryId}`, itinerary)
+export const updateItinerary = (itineraryId, itinerary, token) => {
+  return axios.put(`${baseURL}/itinerary/${itineraryId}`, itinerary, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
   .then((res) => {
       return res
     })

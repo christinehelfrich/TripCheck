@@ -3,18 +3,22 @@ import '../../styles/ItineraryPage.css'
 import ItineraryForm from './ItineraryForm'
 import { updateItinerary } from '../../services/backend/itinerariesService'
 import { useNavigate } from 'react-router-dom'
+import {useSelector} from "react-redux"
 
 const ItineraryBasicInfo = ({itineraryData}) => {
 
     const navigate = useNavigate()
     const [errorMessage, setErrorMessage] = useState('');
+    const user = useSelector((state) => {
+      return state.user.user
+      });
 
     const onSubmit = async (formData) => {
         const req = {};
         Array.from(formData.entries()).forEach(([key, value]) => {
           req[key] = value;
         })
-        let res = await updateItinerary(itineraryData._id, formData)
+        let res = await updateItinerary(itineraryData._id, formData, user.token)
         if(res.status === 200) {
           // redirect to itinerary page
           navigate(`/itinerary/${res.data._id}`, {state: {showCreateSuccess: true}})

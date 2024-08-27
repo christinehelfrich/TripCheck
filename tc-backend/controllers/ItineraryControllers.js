@@ -31,7 +31,6 @@ module.exports.saveItinerary = (req, res) => {
 module.exports.updateItinerary = (req, res) => {
     const {id} = req.params
     const itinerary = req.body
-    console.log(itinerary.calendar[0])
     if(req?.file?.path !== undefined) {
         itinerary.itineraryImage = req?.file?.path
     }

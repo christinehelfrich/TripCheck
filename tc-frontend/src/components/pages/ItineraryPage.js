@@ -3,6 +3,7 @@ import { useParams, useLocation, useNavigate } from 'react-router-dom'
 import { getItineraryById } from '../../services/backend/itinerariesService'
 import ItineraryBasicInfo from '../organisms/ItineraryBasicInfo'
 import ItineraryCalendar from '../organisms/ItineraryCalendar'
+import {useSelector} from "react-redux"
 
 const ItineraryPage = () => {
     const { itineraryId } = useParams()
@@ -13,6 +14,9 @@ const ItineraryPage = () => {
     const [showCreateSuccessMessage, setShowCreateSuccessMessage] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
     const [showUpdateSuccess, setShowUpdateSuccess] = useState(false)
+    const user = useSelector((state) => {
+      return state.user.user
+      });
 
     useEffect(() => {
         if(state?.showCreateSuccess){
@@ -28,7 +32,7 @@ const ItineraryPage = () => {
 
     const fetchItineraryById = async () => {
       setIsLoading(true)
-        let res = await getItineraryById(itineraryId)
+        let res = await getItineraryById(itineraryId, user.token)
         if(res.status === 200) {
             setItinerary(res.data)
             setIsLoading(false)

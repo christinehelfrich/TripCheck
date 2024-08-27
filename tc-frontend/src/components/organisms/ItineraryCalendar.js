@@ -13,7 +13,7 @@ const ItineraryCalendar = ({itineraryData}) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [calendar, setCalendar] = useState(itineraryData.calendar)
-    const [currentDayItinerary, setCurrentDayItinerary] = useState(calendar.length > 0 ? calendar[0] : {date: currentDay, attributes: []})
+    const [currentDayItinerary, setCurrentDayItinerary] = useState(calendar?.length > 0 ? calendar[0] : {date: currentDay, attributes: []})
 
     const changeCurrentDay = (day) => {
         setCurrentDay(new Date(day.year, day.month, day.number));

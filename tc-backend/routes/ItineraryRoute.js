@@ -7,9 +7,9 @@ const { requireAuth } = require("../middleware/Authentication");
 router.get("/itineraries", requireAuth, getItineraries);
 router.get("/itinerary/:id", requireAuth, getItineraryById)
 //router.post("/profile", isPasswordValid, encryptPassword, saveProfile);
-router.post("/itinerary", uploadFile.single('itineraryImage'), saveItinerary);
+router.post("/itinerary", requireAuth, uploadFile.single('itineraryImage'), saveItinerary);
 router.put("/itinerary/:id", requireAuth, uploadFile.single('itineraryImage'), updateItinerary)
-router.delete("/itinerary/:id", deleteItinerary)
+router.delete("/itinerary/:id", requireAuth, deleteItinerary)
 
 
 

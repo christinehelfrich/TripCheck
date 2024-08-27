@@ -2,8 +2,10 @@ import axios from "axios";
 import { baseURL } from "../../utils/constants";
 
 
-export const createItinerary = (itinerary) => {
-    return axios.post(`${baseURL}/itinerary`, itinerary)
+export const createItinerary = (itinerary, token) => {
+    return axios.post(`${baseURL}/itinerary`, itinerary, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
     .then((res) => {
         return res
       })
@@ -14,7 +16,6 @@ export const createItinerary = (itinerary) => {
 }
 
 export const getAllItineraries = (token) => {
-  console.log('token', token)
     return axios.get(`${baseURL}/itineraries`, {
       headers: { Authorization: `Bearer ${token}` },
     })

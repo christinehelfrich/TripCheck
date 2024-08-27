@@ -41,5 +41,4 @@ store.subscribe(()=>{
     saveState(store.getState());
 
 })
-export let persistor = persistStore(store);
 export default store;

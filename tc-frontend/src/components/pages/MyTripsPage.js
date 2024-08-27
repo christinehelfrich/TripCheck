@@ -4,31 +4,26 @@ import ItineraryCard from '../organisms/ItineraryCard'
 import '../../styles/MyTrips.css'
 import HeaderProfile from '../molecules/HeaderProfile'
 import ItineraryFilters from '../molecules/ItineraryFilters'
-import { useCookies } from "react-cookie";
+import {useSelector} from "react-redux"
 
 const MyTripsPage = () => {
 
     const [itineraries, setItineraries] = useState([])
     const [filteredItineraries, setFilteredItineraries] = useState(itineraries)
     const [isLoading, setIsLoading] = useState(false)
-    const [cookies, removeCookie] = useCookies([]);
+    const user = useSelector((state) => {
+        return state.user.user
+        });
 
     useEffect(() => {
-        verifyCookie();
         setIsLoading(true)
         fetchItineraries()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const verifyCookie = () => {
-        console.log(cookies)
-        
-      };
-
     const fetchItineraries = async () => {
-        let res = await getAllItineraries();
+        let res = await getAllItineraries(user.token);
         res?.data !== undefined ? setItineraries(res.data) : setItineraries([])
-        console.log(res)
         onFilterStatusUpdate('future', res?.data)
         setIsLoading(false)
     }

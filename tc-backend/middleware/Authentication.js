@@ -2,20 +2,26 @@ const Profile = require("../models/ProfileModel")
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
-module.exports.userVerification = (req, res, next) => {
-  const token = req.cookies.token
-  if (!token) {
-    console.log('req TOK: ', req.cookies.token)
-    return res.json({ status: false })
+module.exports.requireAuth = async (req, res, next) => {
+  const {authorization} = req.headers;
+
+  if (!authorization) {
+    return res.status(401).json({error: "Authorization token required"});
   }
-  jwt.verify(token, process.env.TOKEN_KEY, async (err, data) => {
-    console.log('data: ', data)
-    if (err) {
-     return res.json({ status: false })
-    } else {
-      const user = await Profile.findById(data.id)
-      if (user) next()
-      else return res.json({ status: false })
-    }
-  })
+
+  const token = authorization.split(" ")[1];
+
+  try {
+    const decodedToken = jwt.verify(
+      token,
+      process.env.TOKEN_KEY
+    )
+
+    const {_id} = decodedToken;
+    
+    req.profile = await Profile.findOne({_id}).select("_id");
+    next()
+  } catch (error) {
+    return res.status(401).json({error: "User token has not been verified... Please log in again."})
+  }
 }

@@ -7,6 +7,15 @@ module.exports.getItineraries = async (req, res) => {
     res.send(itineraries)
 }
 
+module.exports.getItinerariesByProfileId = async (req, res) => {
+    const {id} = req.params
+    let itineraries = await ItineraryModel.find()    
+    itineraries = itineraries.filter((itin) => {
+        return itin.ownerId === id
+    })
+    res.send(itineraries)
+}
+
 
 module.exports.getItineraryById = async (req, res) => {
     const {id} = req.params

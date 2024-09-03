@@ -27,6 +27,18 @@ export const getAllItineraries = (token) => {
     })
 }
 
+export const getItinerariesByProfileId = (token, profileId) => {
+  return axios.get(`${baseURL}/itineraries/${profileId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  .then((res) => {
+      return res
+    })
+  .catch((err) => {
+    return err
+  })
+}
+
 export const getItineraryById = (itineraryId, token) => {
   return axios.get(`${baseURL}/itinerary/${itineraryId}`, {
     headers: { Authorization: `Bearer ${token}` },

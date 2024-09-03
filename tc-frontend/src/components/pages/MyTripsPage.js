@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getAllItineraries } from '../../services/backend/itinerariesService'
+import { getItinerariesByProfileId } from '../../services/backend/itinerariesService'
 import ItineraryCard from '../organisms/ItineraryCard'
 import '../../styles/MyTrips.css'
 import HeaderProfile from '../molecules/HeaderProfile'
@@ -22,7 +22,7 @@ const MyTripsPage = () => {
     }, [])
 
     const fetchItineraries = async () => {
-        let res = await getAllItineraries(user.token);
+        let res = await getItinerariesByProfileId(user.token, user.user._id);
         res?.data !== undefined ? setItineraries(res.data) : setItineraries([])
         onFilterStatusUpdate('future', res?.data)
         setIsLoading(false)

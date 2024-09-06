@@ -13,3 +13,17 @@ export const login = (info) => {
       return err
     })
 }
+
+export const isTokenValid = (token) => {
+  return axios.get(
+  `${baseURL}/isTokenvalid`, {
+    headers: { Authorization: `Bearer ${token}` },
+  }
+)
+  .then((res) => {
+      return res
+  })
+  .catch((err) => {
+    return err
+  })
+}

@@ -29,3 +29,7 @@ module.exports.login = async (req, res) => {
         res.status(500).json({ error: err.message });
       }
 }
+
+module.exports.isTokenValid = async (req, res) => {
+  return res.status(200).send({isValid: true})
+}

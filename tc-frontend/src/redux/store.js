@@ -1,16 +1,18 @@
 import {configureStore} from '@reduxjs/toolkit';
-import {
-    persistStore,
-  } from "redux-persist";
   import { combineReducers } from "redux";
  import userReducer from "./userSlice";
+import { isTokenValid } from '../services/backend/authService';
 
 const KEY = "redux";
 export function loadState() {
   try {
     const serializedState = localStorage.getItem(KEY);
-    if (!serializedState) return undefined;
-    return JSON.parse(serializedState);
+    isTokenValid(JSON.parse(serializedState).user.user.token).then((res) => {
+      if(res?.response?.status === 401) return undefined
+
+    })
+      if (!serializedState) return undefined;
+      return JSON.parse(serializedState);
   } catch (e) {
     return undefined;
   }

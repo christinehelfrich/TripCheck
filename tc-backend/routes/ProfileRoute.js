@@ -1,5 +1,5 @@
 const {Router} = require("express");
-const { login } = require("../controllers/AuthControllers");
+const { login, isTokenValid } = require("../controllers/AuthControllers");
 const {getProfiles, saveProfile, deleteProfile, updateProfile, getProfileById} = require("../controllers/ProfileControllers")
 const { isPasswordValid, encryptPassword } = require("../middleware/ProfileMiddleware");
 const { requireAuth } = require("../middleware/Authentication");
@@ -12,5 +12,6 @@ router.post("/profile", isPasswordValid, encryptPassword, saveProfile);
 router.put("/profile/:id", requireAuth, updateProfile)
 router.delete("/profile/:id", requireAuth, deleteProfile)
 router.post("/login", login)
+router.get("/isTokenvalid", requireAuth, isTokenValid);
 
 module.exports = router

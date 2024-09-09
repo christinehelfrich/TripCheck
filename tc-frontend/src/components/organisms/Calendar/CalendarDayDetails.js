@@ -6,6 +6,9 @@ const CalendarDayDetails = ({currentDay, currentDayItinerary, onUpdateItinerary,
   const [isLoading, setIsLoading] = useState(false)
 
     const addAttribute = (type) => {
+      if(currentDayItinerary.attributes === undefined) {
+        currentDayItinerary.attributes = []
+      }
         if(type === 'activity') {
           currentDayItinerary.attributes.push({
             attributeType: "activity",

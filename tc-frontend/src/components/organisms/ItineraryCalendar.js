@@ -5,7 +5,7 @@ import { updateItinerary } from '../../services/backend/itinerariesService';
 import CalendarDayDetails from './Calendar/CalendarDayDetails';
 import {useSelector} from "react-redux"
 
-const ItineraryCalendar = ({itineraryData}) => {
+const ItineraryCalendar = ({itineraryData, onEditAttribute}) => {
 
     const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const months = ['January', 'February', 'March', 'April', 'May', 'June',
@@ -119,7 +119,7 @@ const ItineraryCalendar = ({itineraryData}) => {
         {successMessage !== '' && (
               <div className='success-panel'>{successMessage}</div>
         )}
-        <CalendarDayDetails onUpdateItinerary={onUpdateItinerary} currentDay={currentDay} currentDayItinerary={currentDayItinerary} onAttributeUpdated={onAttributeUpdated}></CalendarDayDetails>
+        <CalendarDayDetails onUpdateItinerary={onUpdateItinerary} currentDay={currentDay} currentDayItinerary={currentDayItinerary} onAttributeUpdated={onAttributeUpdated} editAttribute={onEditAttribute}></CalendarDayDetails>
       </div>
     </div>
     </>

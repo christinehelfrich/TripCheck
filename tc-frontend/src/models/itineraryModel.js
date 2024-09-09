@@ -1,6 +1,6 @@
 export const ItineraryAttributes = {
     attributeType: String,
-    attributeContent: String
+    attributeTitle: String
 }
 
 export const ItineraryDay = {

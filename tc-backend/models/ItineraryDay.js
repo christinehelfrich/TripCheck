@@ -2,7 +2,7 @@
 
 // const ItineraryAttributes = {
 //     attributeType: String,
-//     attributeContent: String
+//     attributeTitle: String
 // }
 
 
@@ -20,19 +20,19 @@
 //         attributes: [
 //             {
 //                 attributeType: 'night',
-//                 attributeContent: 'hotel california'
+//                 attributeTitle: 'hotel california'
 //             },
 //             {
 //                 attributeType: 'activity',
-//                 attributeContent: 'driving racecars'
+//                 attributeTitle: 'driving racecars'
 //             },
 //             {
 //                 attributeType: 'activity',
-//                 attributeContent: 'dinner at nobu'
+//                 attributeTitle: 'dinner at nobu'
 //             },
 //             {
 //                 attributeType: 'transportation',
-//                 attributeContent: 'rental porsche'
+//                 attributeTitle: 'rental porsche'
 //             },
 //         ]
 //     },

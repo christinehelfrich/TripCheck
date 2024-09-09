@@ -4,6 +4,7 @@ import { getItineraryById } from '../../services/backend/itinerariesService'
 import ItineraryBasicInfo from '../organisms/ItineraryBasicInfo'
 import ItineraryCalendar from '../organisms/ItineraryCalendar'
 import {useSelector} from "react-redux"
+import CalendarAttributeDrawer from '../organisms/Calendar/CalendarAttributeDrawer'
 
 const ItineraryPage = () => {
     const { itineraryId } = useParams()
@@ -14,6 +15,7 @@ const ItineraryPage = () => {
     const [showCreateSuccessMessage, setShowCreateSuccessMessage] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
     const [showUpdateSuccess, setShowUpdateSuccess] = useState(false)
+    const [attributeShown, setAttributeShown] = useState(null)
     const user = useSelector((state) => {
       return state.user.user
       });
@@ -43,6 +45,10 @@ const ItineraryPage = () => {
         }
     }
 
+    const onEditAttribute = (attribute) => {
+      setAttributeShown(attributeShown === attribute ? null : attribute)
+    }
+
   return (
     <div>
         {showCreateSuccessMessage && (<div className='success-panel'>Successfully Created!</div>)}
@@ -54,8 +60,9 @@ const ItineraryPage = () => {
         {!isLoading && (
             <>
             <h2>Your {itinerary.itineraryName} Itinerary</h2>
+            <CalendarAttributeDrawer attributeShown={attributeShown} isOpen={attributeShown != null} onClose={() => setAttributeShown(null)}></CalendarAttributeDrawer>
             <ItineraryBasicInfo itineraryData={itinerary}></ItineraryBasicInfo>
-            <ItineraryCalendar itineraryData={itinerary}></ItineraryCalendar>
+            <ItineraryCalendar itineraryData={itinerary} onEditAttribute={onEditAttribute}></ItineraryCalendar>
             </>
         )}
     </div>
